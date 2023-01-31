@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="blog_right_sidebar">
+        <div class="card">
+            <aside class="single_sidebar_widget search_widget">
+                <form action="#">
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Bạn muốn tìm...">
+                            <div class="input-group-append">
+                                <button class="btn" type="button"><i class="ti-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="main_btn rounded-0 w-100" type="submit">Tìm kiếm</button>
+                </form>
+            </aside>
+        </div>
+        <div class="card" style="margin-top: 5px;">
+            <aside class="single_sidebar_widget post_category_widget">
+                <h4 class="widget_title"> <i class="fa fa-list" aria-hidden="true"></i> Danh mục sản phẩm</h4>
+                <ul class="list cat-list">
+                    <a th:each="c: ${cates}" th:href="@{|/product/list?cid=${c.id}|}" class="d-flex">
+                        <p>[[${c.name}]]</p>
+                    </a>
+                </ul>
+            </aside>
+        </div>
+    </div>
+</div>

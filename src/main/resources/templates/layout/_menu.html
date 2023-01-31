@@ -1,0 +1,89 @@
+<div class="top_menu">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-7">
+				<div class="float-left">
+					<p>Phone: +09 618 52 791</p>
+					<p>email: lebaodangtv.com</p>
+				</div>
+			</div>
+			<div class="col-lg-5">
+				<div class="float-right">
+					<ul class="right_side">
+						<li><a href=""> Thông tin liên hệ </a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="main_menu">
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-dark w-100">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<a class="navbar-brand logo_h" href="index.html"> <img
+				src="img/logo.png" alt="" />
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse offset w-100"
+				id="navbarSupportedContent">
+				<div class="row w-100 mr-0">
+					<div class="col-lg-7 pr-0">
+						<ul class="nav navbar-nav center_nav pull-right">
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/product/list}">Trang Chủ</a></li>
+
+							<!-- Da dang nhap -->
+							<th:block th:if="${#request.remoteUser}">
+								<li class="nav-item "><a class="nav-link"
+									th:href="@{/security/logoff}">Đăng Xuất</a></li>
+								<li class="nav-item "><a class="nav-link"
+									th:href="@{/order/list}">Hóa Đơn</a></li>
+								<li
+									th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}"
+									class="nav-item "><a class="nav-link"
+									th:href="@{/admin/home/index}">Quản Lí</a></li>
+							</th:block>
+
+							<!-- chua dang nhap unless: nguoc lai -->
+							<th:block th:unless="${#request.remoteUser}">
+								<li class="nav-item "><a class="nav-link"
+									th:href="@{/security/login/form}">Đăng Nhập</a></li>
+								<li class="nav-item "><a class="nav-link"
+									th:href="@{/account/register}">Đăng Ký</a></li>
+							</th:block>
+
+						</ul>
+					</div>
+
+					<div class="col-lg-5 pr-0">
+						<ul class="nav navbar-nav navbar-right right_nav pull-right">
+
+							<li class="nav-item"><a th:href="@{/cart/view}"
+								class="icons"> <i class="ti-shopping-cart"> <b
+										style="color: chartreuse;">{{cart.count}} x ${{cart.amount
+											| number : 2}} VNĐ </b>
+								</i>
+							</a></li>
+
+							<!-- thong tin nguoi dang nhap -->
+							<li th:if="${#request.remoteUser}" class="nav-item"><a
+								href="" class="icons"> <i class="ti-user" aria-hidden="true">
+										<b style="color: chartreuse;">[[${#request.remoteUser}]]</b>
+								</i>
+							</a></li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+</div>

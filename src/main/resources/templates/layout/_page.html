@@ -1,0 +1,39 @@
+<div class="col d-flex justify-content-center">
+    <div class="row" th:if="${totalPages > 1}">
+        <div class="col-md-12">
+            <ul class="pagination">
+                <li class="page-item" th:class="${currentPage == 1 ? 'disabled' : '' }" > 
+                    <a class="page-link" th:href="@{${currentPage > 1} ? ${'?page=' + (currentPage - 1)}}">Trướt</a>
+                </li>
+                
+                <li class="page-item" th:each="i : ${#numbers.sequence(1,totalPages)}" th:class="${currentPage == i ? 'active' : ''}">
+                    <a class="page-link"  th:href="@{|?page=| + ${i}}">[[${i}]]</a>
+                </li>
+                
+                <li class="page-item" th:class="${currentPage == totalPages ? 'disabled' : ''}">
+                    <a class="page-link" th:href="@{${currentPage < totalPages} ? ${ '?page=' + (currentPage + 1)}}">Kế Tiếp</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--http://localhost:8080/product/list?cid=1002&&page=3-->
+    <div class="row" th:if="${totalPagesCategory > 1}">
+        <div class="col-md-12">
+            <ul class="pagination">
+                                                            <!--http://localhost:8080/product/list?cid=1001 -->
+                <li class="page-item" th:class="${currentPageCategory == 1 ? 'disabled' : '' }" >
+                    <a class="page-link" th:href="@{ ${currentPageCategory > 1} ? ${ '?cid=' + categoryId + '&&page=' + (currentPageCategory - 1)} }">Previous</a>
+                </li>
+            
+                <li class="page-item" th:each="i : ${#numbers.sequence(1,totalPagesCategory)}" th:class="${currentPageCategory == i ? 'active' : ''}">
+                    <a class="page-link" th:href="@{ |?cid=| + ${categoryId} + |&&page=| + ${i} }">[[${i}]]</a>
+                </li>
+                
+                <li class="page-item" th:class="${currentPageCategory == totalPagesCategory ? 'disabled' : ''}">
+                    <a class="page-link" th:href="@{ ${currentPageCategory < totalPagesCategory} ? ${ '?cid=' + categoryId + '&&page=' + (currentPageCategory + 1)} }">Next</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>

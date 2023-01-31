@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www/thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{:: main})}">
+  <body>
+    
+    <main>
+
+        <div class="card">
+            <div class="card-header">
+              <i class="fa fa-id-card"></i> Thông tin đơn hàng
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">
+                        <label for="">Id đơn hàng</label>
+                        <div class="form-control" readonly>[[${order.id}]] </div>
+                    </div>
+                    <div class="col-4">
+                        <label for="">Người mua</label>
+                        <div class="form-control" readonly>[[${order.account.username}]] </div>
+                    </div>
+                    <div class="col-4">
+                        <label for="">Ngày đặt hàng</label>
+                        <div class="form-control" readonly>[[${order.createDate}]] </div>
+                    </div>
+                </div>
+                <br>
+                <label for="">Địa chỉ người nhận</label>
+                <textarea class="form-control" aria-label="With textarea" readonly th:text="${order.address}"> </textarea>
+            </div>
+        </div>
+        <br>
+        
+        <div class="card">
+            <div class="card-header">
+              <i class="fa fa-cart-arrow-down"></i> Chi tiết mặt hàng trong đơn hàng
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Giá tiền</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Tổng tiền</th>
+                      </tr>
+                    </thead>
+                    <tbody th:each="orderDetail : ${order.orderDetails}">
+                      <tr>
+                        <td>[[${ orderDetail.product.id }]]</td>
+                        <td>[[${ orderDetail.product.name }]]</td>
+                        <td>[[${ #numbers.formatDecimal ( orderDetail.product.price , 0 , 'COMMA' , 2 , 'POINT')}]] VNĐ</td>
+                        <td>[[${ orderDetail.quantity }]]</td>
+                        <td>[[${ #numbers.formatDecimal ( orderDetail.product.price * orderDetail.quantity , 0 , 'COMMA' , 2 , 'POINT')}]] VNĐ</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+
+    </main>
+  </body>
+</html>

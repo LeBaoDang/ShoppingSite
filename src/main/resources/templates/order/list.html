@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www/thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{:: main})}">
+  <body>
+
+    <main>
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-list" aria-hidden="true"></i> Danh sách đơn hàng đã đặt
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Stt</th>
+                        <th scope="col">Id hóa đơn</th>
+                        <th scope="col">Ngày đặt hàng</th>
+                        <th scope="col">Địa chỉ nhận hàng</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody th:each="order, state : ${orders}">
+                      <tr>
+                        <td>[[${ state.index }]]</td>
+                        <td>[[${ order.id }]]</td>
+                        <td>[[${ order.createDate }]]</td>
+                        <td>[[${ order.address }]]</td>
+                        <td><a th:href="@{|/order/detail/${order.id}|}" class="btn btn-default">Xem</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div> 
+        </div>
+    </main>
+
+  </body>
+</html>
