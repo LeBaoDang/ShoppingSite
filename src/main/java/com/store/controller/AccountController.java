@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -30,7 +31,7 @@ public class AccountController {
         return "/security/register";
     }
 
-    @PostMapping("/register")
+    @RequestMapping( value = "/register", method =  RequestMethod.POST) //@RequestMapping(value = "/doLogin", method = RequestMethod.POST)
     public String createAccount(Model model,
     		@RequestParam("confirmPassword") String confirmPassword, 
     		@RequestParam("password") String password,
@@ -52,8 +53,9 @@ public class AccountController {
         
         else {
         	try {
-                accountService.saveAccount(accountForm);
-                return "/product/list";
+                accountService.saveAccount(accountForm); 
+                model.addAttribute("message", " <b style=\"position: absolute;  right: 0px;  width: 300px; color: chartreuse \" > Đăng ký thành công! </b> "); 
+                return "redirect:/security/login/form";
             } catch (Exception ex) {
                 model.addAttribute("message", "<b style=\"position: absolute;  right: 0px;  width: 300px; color: red\" > Tài khoản này đã được sử dụng! </b>");
                 return "/security/register";
