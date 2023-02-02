@@ -1,6 +1,7 @@
 package com.store.service.impl;
 
 import java.io.File;
+import java.nio.file.Paths;
 
 import javax.servlet.ServletContext;
 
@@ -19,10 +20,9 @@ public class UploadServiceImpl implements UploadService {
 
 	@Override
 	public File save(MultipartFile file, String folder) {
-		System.out.println("ccc");
 		try {
-			File dir = new ClassPathResource("/utilities/img/" + folder).getFile();
-			// File dir = new File(app.getRealPath("/utilities/img/" + folder));
+			//File dir = new ClassPathResource("static/utilities/img/" + folder).getFile();
+			File dir = new File(app.getRealPath("/assets/" + folder));
 			if (!dir.exists()) {
 				dir.mkdir();
 			}
@@ -40,5 +40,5 @@ public class UploadServiceImpl implements UploadService {
 			throw new RuntimeException(e);
 		}
 	}
-
+	
 }

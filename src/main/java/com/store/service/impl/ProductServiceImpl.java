@@ -55,6 +55,17 @@ public class ProductServiceImpl implements ProductService {
 		return productRepo.findAll();
 	}
 
+	@Override
+	public Product createProduct(Product product) {
+		
+		Optional<Product> optionProduct = productRepo.findById(product.getId());
+		if(optionProduct.isPresent()) {
+			throw new ResourceNotFoundException(String.format("product.already.exist.with.id:%s", product.getId()));
+		}
+		
+		return productRepo.save(product);
+	}
+
 
 
 }

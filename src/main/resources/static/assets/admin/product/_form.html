@@ -1,25 +1,17 @@
 <div class="row">
-    <div class="col-3">
+    <div class="col-4">
         <img ng-src="{{'/utilities/img/images/' + form.image}}" class="mx-auto d-block img-fluid w-100"
-            style="max-width: 100%; height: 250px;">
+            style="max-width: 100%; height: 220px;">
         <br>
-        <button class="btn btn-primary"><input type="file" class="form-control-file" id="exampleFormControlFile1"
-                id="image" onchange="angular.element(this).scope().imageChanged(this.files)"></button>
+        <button class="btn btn-primary"><input type="file" class="form-control-file" id="image"
+             onchange="angular.element(this).scope().imageChanged(this.files)"></button>
     </div>
-    <div class="col-9">
+    <div class="col-4">
         <label for="">Tên sản phẩm</label>
         <input type="text" class="form-control" ng-model="form.name">
         <br>
         <label for="">Giá tiền</label>
-        <input type="text" class="form-control" ng-model="form.price">
-        <br>
-        <label for="">Loại sản phẩm</label>
-        <select class="form-control" ng-model="form.category.id">
-            <option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
-        </select>
-        <br>
-        <label for="">Ngày tháng</label>
-        <input type="date" class="form-control" ng-model="form.createDate">
+        <input type="number" class="form-control" ng-model="form.price">
         <br>
         <div>
             <label for="">Trang thái: </label>
@@ -41,5 +33,14 @@
                 <b class="glyphicon glyphicon-refresh"></b> Reset
             </button>
         </div>
+    </div>
+    <div class="col-4">
+        <label for="">Loại sản phẩm</label>
+        <select class="form-control" ng-model="form.category.id">
+            <option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
+        </select>
+        <br>
+        <label for="">Ngày tháng</label>
+        <input type="date" class="form-control" ng-model="form.createDate">
     </div>
 </div>

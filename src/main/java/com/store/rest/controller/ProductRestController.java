@@ -35,5 +35,14 @@ public class ProductRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
     }
+    
+    @PostMapping
+    public ResponseEntity< Product > createProduct(@RequestBody Product product){
+    	try {
+			return new ResponseEntity<> (productService.createProduct(product), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<> (HttpStatus.BAD_REQUEST); // 400 lỗi 
+		}
+    }
 
 }

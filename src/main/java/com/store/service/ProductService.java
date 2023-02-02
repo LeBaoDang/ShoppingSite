@@ -18,4 +18,6 @@ public interface ProductService {
     Page<Product> findCategoryProduct(String categoryId, int pageSize, int pageNumber) throws Exception;
 
 	List<Product> findAll();
+
+	Product createProduct(Product product);
 }

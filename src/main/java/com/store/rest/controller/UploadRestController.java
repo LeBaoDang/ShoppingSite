@@ -16,16 +16,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.store.service.UploadService;
 
+
 @CrossOrigin("*")
-@RequestMapping("/rest/upload")
+@RequestMapping("/rest/img")
 public class UploadRestController {
 	
 	@Autowired
-	UploadService uploadService;
+	UploadService uploadService; 
 
 	@PostMapping("/{folder}")
 	public JsonNode upload(@PathParam("file") MultipartFile file,
 			@PathVariable("folder") String folder) {
+		System.out.println("hello");
 		File saveFile = uploadService.save(file, folder);
 		ObjectMapper mapper = new ObjectMapper();
 		ObjectNode node = mapper.createObjectNode();
@@ -33,4 +35,5 @@ public class UploadRestController {
 		node.put("size", saveFile.length());
 		return node;
 	}
+	
 }
