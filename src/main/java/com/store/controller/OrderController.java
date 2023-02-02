@@ -27,11 +27,15 @@ public class OrderController {
     // liet ke tat ca don hang da dat
     @GetMapping("/list")
     public String orderList(Model model, HttpServletRequest request){
-        // lấy ra user đã đăng nhập
-        String username = request.getRemoteUser();
-        // lấy ra list của đơn hàng
-        model.addAttribute("orders", orderService.findByUsername(username));
-        return "/order/list";
+        try {
+        	// lấy ra user đã đăng nhập
+            String username = request.getRemoteUser();
+            // lấy ra list của đơn hàng
+            model.addAttribute("orders", orderService.findByUsername(username));
+            return "/order/list";
+		} catch (Exception e) {
+			return null;
+		}
     }
 
     // xem lai chi tiet don hang da dat

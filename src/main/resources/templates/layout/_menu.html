@@ -67,7 +67,7 @@
 						<ul class="nav navbar-nav navbar-right right_nav pull-right">
 
 							<li class="nav-item"><a th:href="@{/cart/view}"
-								class="icons"> <i class="ti-shopping-cart"> <b
+								class="icons"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> <b
 										style="color: chartreuse;">{{cart.count}} x ${{cart.amount
 											| number : 2}} VNĐ </b>
 								</i>
@@ -75,8 +75,8 @@
 
 							<!-- thong tin nguoi dang nhap -->
 							<li th:if="${#request.remoteUser}" class="nav-item"><a
-								href="" class="icons"> <i class="ti-user" aria-hidden="true">
-										<b style="color: chartreuse;">[[${#request.remoteUser}]]</b>
+								href="" class="icons"> <i class="fa fa-user" aria-hidden="true"></i>
+									<b style="color: chartreuse;">[[${#request.remoteUser}]]</b>
 								</i>
 							</a></li>
 

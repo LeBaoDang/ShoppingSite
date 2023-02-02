@@ -2,6 +2,9 @@ package com.store.rest.controller;
 
 import com.store.entity.Product;
 import com.store.service.ProductService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +25,15 @@ public class ProductRestController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND); // 404 không tìm thấy
         }
+    }
+    
+    @GetMapping
+    public ResponseEntity< List<Product> > getAll(){
+    	try {
+			return new ResponseEntity<>(productService.findAll(),HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
     }
 
 }

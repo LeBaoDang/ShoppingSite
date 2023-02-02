@@ -1,6 +1,9 @@
 package com.store.service;
 
 import com.store.entity.Account;
+
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,7 +23,7 @@ public class UserService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		/*
+		
 		try {
 			Account account = accountService.findById(username);
 			// tạo UserDetails từ Account
@@ -34,7 +37,7 @@ public class UserService implements UserDetailsService {
 		} catch (Exception e) {
 			throw new UsernameNotFoundException(username + "not found");
 		}
-		*/
+		 /*
 		try {
 			Account user = accountService.findById(username);
 			String password = user.getPassword();
@@ -42,7 +45,7 @@ public class UserService implements UserDetailsService {
 			return User.withUsername(username).password(password).roles(role).build();
 		} catch (Exception ex) {
 			throw new UsernameNotFoundException(username + "not found");
-		}
+		} */
 
 	}
 
