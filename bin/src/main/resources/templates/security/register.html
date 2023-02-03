@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www/thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{:: main})}">
+
+<body>
+
+    <main>
+        <div class="card">
+            <form th:action="@{/account/register}" method="post" th:object="${account}"> 
+                <div class="card-header">
+                <i class="fa fa-pencil-square-o"></i> <b>Đăng Ký [(${message})] </b>
+                </div>
+                <div class="card-body">
+                    <label for="">Tài khoản</label>
+                    <input type="text" class="form-control" th:field="*{username}">
+                    <i th:errors="*{username}" style="color: red; "></i>
+                    <br>
+                    <br>
+                    <label for="">Mật khẩu</label>
+                    <input type="password" class="form-control" th:field="*{password}" name="password">
+                  	<i th:errors="*{password}" style="color: red;"></i>
+                    <br>
+                    <br>
+                    <label for="">Xác nhận lại mật khẩu</label>
+                    <input type="password" class="form-control" name="confirmPassword">
+                  	<i style="color: red;" >[(${errorConfirmPassword})]</i>
+                    <i style="color: red;" >[(${error})]</i>  
+                    <br>
+                    <br>
+                    <label for="">Họ và tên</label>
+                    <input type="text" class="form-control" th:field="*{fullname}" >
+                    <i th:errors="*{fullname}" style="color: red;"></i>
+                    <br>
+                    <br>
+                    <label for="">Email</label>
+                    <input type="text" class="form-control" th:field="*{email}" >
+                    <i th:errors="*{email}" style="color: red;"></i>
+                    <br>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary"> <i class="fa fa-arrow-circle-right" > </i> Đăng Ký</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    
+</body>
+
+</html>

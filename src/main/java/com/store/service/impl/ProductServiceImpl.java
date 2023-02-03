@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 @Service
 public class ProductServiceImpl implements ProductService {
 
@@ -24,7 +26,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product GetOneProduct(Long id) {
+    public Product getOneProduct(Long id) {
         Optional<Product> optionalProduct = productRepo.findById(id);
         if(!optionalProduct.isPresent()){
             throw new ResourceNotFoundException(String.format("product.not.found.with.id:%s", id));
@@ -56,14 +58,35 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	@Transactional(rollbackOn = { Exception.class, Throwable.class })
 	public Product createProduct(Product product) {
+		return productRepo.save(product);
+	}
+
+	@Override
+	@Transactional(rollbackOn = { Exception.class, Throwable.class })
+	public Product updateProduct(Product product) {
 		
 		Optional<Product> optionProduct = productRepo.findById(product.getId());
-		if(optionProduct.isPresent()) {
+		if(!optionProduct.isPresent()) {
 			throw new ResourceNotFoundException(String.format("product.already.exist.with.id:%s", product.getId()));
 		}
 		
 		return productRepo.save(product);
+		
+	}
+
+	@Override
+	@Transactional(rollbackOn = { Exception.class, Throwable.class })
+	public void deleteProduct(Long id) {
+		
+		Optional<Product> optionProduct = productRepo.findById(id);
+		if(!optionProduct.isPresent()) {
+			throw new ResourceNotFoundException(String.format("product.already.exist.with.id:%s", id));
+		}
+		
+		productRepo.deleteById(id);
+		
 	}
 
 

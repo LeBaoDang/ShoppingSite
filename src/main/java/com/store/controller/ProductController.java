@@ -57,7 +57,7 @@ public class ProductController {
     @GetMapping("/detail/{id}")
     public String productDetail(Model model, @PathVariable("id") Long id, @RequestParam(value = "page",required = false, defaultValue = "1") int page){
         List<Product> products = new ArrayList<>();
-        Product product = productService.GetOneProduct(id);
+        Product product = productService.getOneProduct(id);
         try {
             Page<Product> productPage = productService.findCategoryProduct(product.getCategory().getId(),Constant.PAGE_PRODUCT_CATEGORY_MAX_SIZE, page );
             products = productPage.getContent();

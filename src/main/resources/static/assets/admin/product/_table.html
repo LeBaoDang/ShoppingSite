@@ -1,47 +1,52 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Tên sản phẩm</th>
-            <th scope="col">Hình ảnh</th>
-            <th scope="col">Giá tiền</th>
-            <th scope="col">Ngày tháng</th>
-            <th scope="col">Loại sản phẩm</th>
-            <th scope="col">Trạng thái</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="p in items">
-            <td>{{p.id}}</td>
-            <td>{{p.name}}</td>
-            <td><img src="/utilities/img/images/{{p.image}}" style="width: 50px;"></td>
-            <td>{{p.price | number : 2}} VNĐ</td>
-            <td>{{p.createDate | date : 'dd-MM-yyyy'}}</td>
-            <td>{{p.category.name}}</td>
-            <td>{{p.available ? 'Yes' : 'No'}}</td>
-            <td>
-                <div>
-                    <button class="btn btn-primary" ng-click="edit(p)"> <i class="fa fa-check-circle-o"
-                            aria-hidden="true"></i> edit</button>
-                    <button class="btn btn-danger" ng-click="delete(p)"> <i class="fa fa-trash"></i> remove</button>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<div class="panel-footer text-center">
-    <button ng-click="pager.first()" class="btn btn-danger">
-        <b class="glyphicon glyphicon-hand-up"></b>
-    </button>
-    <button ng-click="pager.prev()" class="btn btn-primary">
-        <b class="glyphicon glyphicon-hand-left"></b>
-    </button>
-    <button class="btn btn-success">{{pager.page + 1}} of {{pager.count}}</button>
-    <button ng-click="pager.next()" class="btn btn-primary">
-        <b class="glyphicon glyphicon-hand-right"></b>
-    </button>
-    <button ng-click="pager.last()" class="btn btn-danger">
-        <b class="glyphicon glyphicon-hand-down"></b>
-    </button>
+<div class="panel panel-default">
+	<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+                <th>Image</th>
+				<th>Price</th>
+				<th>Date</th>
+				<th>Category</th>
+				<th>Available ?</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in pager.items">
+				<td>{{item.id}}</td>
+				<td>{{item.name}}</td>
+                <td><img src="/utilities/img/images/{{item.image}}" style="width: 50px;"></td>
+				<td>{{item.price | number : 2}} VNĐ</td>
+				<td>{{item.createDate | date : 'dd-MM-yyyy'}}</td>
+				<td>{{item.category.name}}</td>
+				<td>{{item.available ? 'Yes' : 'No'}}</td>
+				<td>
+					<div class="btn-group btn-group-xs">
+						<button ng-click="edit(item)"
+							class="btn btn-warning glyphicon glyphicon-edit"> <i class="fa fa-check-circle-o"
+                            aria-hidden="true"></i> Clear </button>
+						<button ng-click="delete(item)"
+							class="btn btn-danger glyphicon glyphicon-trash"> <i class="fa fa-trash"></i> remove </button>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="panel-footer text-center">
+		<button ng-click="pager.first()" class="btn btn-danger">
+			<b class="glyphicon glyphicon-hand-up"> First </b>
+		</button>
+		<button ng-click="pager.prev()" class="btn btn-primary">
+			<b class="glyphicon glyphicon-hand-left"> Prev </b>
+		</button>
+		<button class="btn btn-success">{{pager.page + 1}} of
+			{{pager.count}}</button>
+		<button ng-click="pager.next()" class="btn btn-primary">
+			<b class="glyphicon glyphicon-hand-right"> Next </b>
+		</button>
+		<button ng-click="pager.last()" class="btn btn-danger">
+			<b class="glyphicon glyphicon-hand-down"> Last </b>
+		</button>
+	</div>
 </div>

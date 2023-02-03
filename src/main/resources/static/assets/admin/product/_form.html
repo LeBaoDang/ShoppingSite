@@ -1,46 +1,46 @@
 <div class="row">
-    <div class="col-4">
-        <img ng-src="{{'/utilities/img/images/' + form.image}}" class="mx-auto d-block img-fluid w-100"
-            style="max-width: 100%; height: 220px;">
-        <br>
-        <button class="btn btn-primary"><input type="file" class="form-control-file" id="image"
-             onchange="angular.element(this).scope().imageChanged(this.files)"></button>
-    </div>
-    <div class="col-4">
-        <label for="">Tên sản phẩm</label>
-        <input type="text" class="form-control" ng-model="form.name">
-        <br>
-        <label for="">Giá tiền</label>
-        <input type="number" class="form-control" ng-model="form.price">
-        <br>
-        <div>
-            <label for="">Trang thái: </label>
-            <input type="radio" ng-model="form.available" ng-value="true" name="available"> True
-            <input type="radio" ng-model="form.available" ng-value="false" name="available"> False
-        </div>
-        <br>
-        <div class="panel-footer">
-            <button ng-click="create()" class="btn btn-primary">
-                <b class="glyphicon glyphicon-plus"></b> Create
-            </button>
-            <button ng-click="update()" class="btn btn-success">
-                <b class="glyphicon glyphicon-save"></b> Update
-            </button>
-            <button ng-click="delete(form)" class="btn btn-danger">
-                <b class="glyphicon glyphicon-trash"></b> Delete
-            </button>
-            <button ng-click="reset()" class="btn btn-info">
-                <b class="glyphicon glyphicon-refresh"></b> Reset
-            </button>
-        </div>
-    </div>
-    <div class="col-4">
-        <label for="">Loại sản phẩm</label>
-        <select class="form-control" ng-model="form.category.id">
-            <option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
-        </select>
-        <br>
-        <label for="">Ngày tháng</label>
-        <input type="date" class="form-control" ng-model="form.createDate">
-    </div>
+	<div class="col-4">
+		<img ng-src="{{'/utilities/img/images/' + form.image}}" class="mx-auto d-block img-fluid w-100"
+			style="max-width: 100%; height: 220px;">
+		<br>
+		<button><input type="file" class="form-control-file" id="image"
+				onchange="angular.element(this).scope().imageChanged(this.files)"></button>
+	</div>
+	<div class="col-4">
+		<label for="">Tên sản phẩm</label>
+		<input type="text" class="form-control" ng-model="form.name">
+		<br>
+		<label for="">Giá tiền</label>
+		<input type="number" class="form-control" ng-model="form.price">
+		<br>
+		<div>
+			<label for="">Trang thái: </label>
+			<input type="radio" ng-model="form.available" ng-value="true" name="available"> True
+			<input type="radio" ng-model="form.available" ng-value="false" name="available"> False
+		</div>
+		<br>
+		<div class="panel-footer">
+			<button ng-click="create()" class="btn btn-primary">
+				<b class="glyphicon glyphicon-plus"></b> Create
+			</button>
+			<button ng-click="update()" class="btn btn-success">
+				<b class="glyphicon glyphicon-save"></b> Update
+			</button>
+			<button ng-click="delete(form)" class="btn btn-danger">
+				<b class="glyphicon glyphicon-trash"></b> Delete
+			</button>
+			<button ng-click="reset()" class="btn btn-info">
+				<b class="glyphicon glyphicon-refresh"></b> Reset
+			</button>
+		</div>
+	</div>
+	<div class="col-4">
+		<label for="">Loại sản phẩm</label>
+		<select class="form-control" ng-model="form.category.id">
+			<option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
+		</select>
+		<br>
+		<label for="">Ngày tháng</label>
+		<input type="date" class="form-control" ng-model="form.createDate">
+	</div>
 </div>

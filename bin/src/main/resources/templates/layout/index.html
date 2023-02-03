@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://wwww/thymeleaf.org" th:fragment="dynamic(main)">
+
+<head>
+    <title>Website Shopping</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- angular js-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <!-- Thu icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/utilities/css/bootstrap.css}" />
+    <link rel="stylesheet" th:href="@{/utilities/vendors/linericon/style.css}" />
+    <link rel="stylesheet" th:href="@{/utilities/css/font-awesome.min.css}" />
+    <link rel="stylesheet" th:href="@{/utilities/css/themify-icons.css}" />
+    <link rel="stylesheet" th:href="@{/utilities/css/flaticon.css}" />
+    <link rel="stylesheet" th:href="@{/utilities/vendors/owl-carousel/owl.carousel.min.css}" />
+    <link rel="stylesheet" th:href="@{/utilities/vendors/lightbox/simpleLightbox.css}" />
+    <link rel="stylesheet" th:href="@{/utilities/vendors/nice-select/css/nice-select.css}" />
+    <link rel="stylesheet" th:href="@{/utilities/vendors/animate-css/animate.css}" />
+    <link rel="stylesheet" th:href="@{/utilities/vendors/jquery-ui/jquery-ui.css}" />
+    <!-- main css -->
+    <link rel="stylesheet" th:href="@{/utilities/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/utilities/css/responsive.css}" />
+    <link rel="stylesheet" th:href="@{/utilities/css/login.css}" />
+    <link rel="stylesheet" th:href="@{/utilities/css/footer.css}" />
+</head>
+
+<body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+
+    <div>
+        <header class="header_area">
+            <div th:replace="/layout/_menu.html"></div>
+        </header>
+       
+        <b><hr></b>
+        
+        <br>
+
+        <div class="container">
+            <div class="row">
+                <!-- 
+                <div class="col-sm-9">
+                    <div class="article ">
+                        <div th:replace="${main}"></div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="article ">
+                        <div th:replace="/layout/_catego.html"></div>
+                    </div>
+                </div>-->
+          
+                <div class="col-lg-8 posts-list">
+                    <div class="single-post">
+                        <div th:replace="${main}"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div>
+                        <aside>
+                            <div th:replace="/layout/_category.html"></div>
+                        </aside>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+
+        <br>
+        
+        <div th:replace="/layout/_page.html"></div>
+
+        <!-- <div th:replace="/layout/_category.html"></div> -->
+
+        <br>
+
+        <!-- <section class="inspired_product_area section_gap_bottom_custom">
+            <div th:replace="${main}"></div>
+        </section> -->
+    
+        <footer>
+            <div th:replace="/layout/_footer.html"></div>
+        </footer>  
+    </div>
+
+    <script src="/assets/shopping-cart-app.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!--JS-->
+    <script th:src="@{/utilities/js/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/utilities/js/js/popper.js}"></script>
+    <script th:src="@{/utilities/js/js/bootstrap.min.js}"></script>
+    <script th:src="@{/utilities/js/js/stellar.js}"></script>
+    <script th:src="@{/utilities/js/vendors/lightbox/simpleLightbox.min.js}"></script>
+    <script th:src="@{/utilities/js/vendors/nice-select/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/utilities/js/vendors/isotope/imagesloaded.pkgd.min.js}"></script>
+    <script th:src="@{/utilities/js/vendors/isotope/isotope-min.js}"></script>
+    <script th:src="@{/utilities/js/vendors/owl-carousel/owl.carousel.min.js}"></script>
+    <script th:src="@{/utilities/js/js/jquery.ajaxchimp.min.js}"></script>
+    <script th:src="@{/utilities/js/vendors/counter-up/jquery.waypoints.min.js}"></script>
+    <script th:src="@{/utilities/js/vendors/counter-up/jquery.counterup.js}"></script>
+    <script th:src="@{/utilities/js/js/mail-script.js}"></script>
+    <script th:src="@{/utilities/js/js/theme.js}"></script>
+</body>
+
+</html>

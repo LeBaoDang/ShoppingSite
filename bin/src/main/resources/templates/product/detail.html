@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www/thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{:: main})}">
+
+<body>
+
+    <main>
+        <!--================Single Product Area =================-->
+        <div class="container">
+            <div class="row s_product_inner">
+                <div class="col-lg-6">
+                    <div class="s_product_img">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img th:src="@{'/utilities/img/images/' + ${item.image}}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="s_product_text">
+                        <h3>[[${item.name}]]</h3>
+                        <h2>[[${ #numbers.formatDecimal ( item.price , 0 , 'COMMA' , 2 , 'POINT')}]] VNĐ</h2>
+                        <ul class="list">
+                            <li>
+                                <a class="active" href="#">
+                                    <span>Category: </span>[[${item.category.name}]]</a>
+                            </li>
+                        </ul>
+                        <p>
+                            Mill Oil is an innovative oil filled radiator with the most
+                            modern technology. If you are looking for something that can
+                            make your interior look awesome, and at the same time give you
+                            the pleasant warm feeling during the winter.
+                        </p>
+                        <div class="product_count">
+                            <div>
+                                <label for="">Số lượng:</label>
+                                <input type="number" th:value="0" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="card_area">
+                            <a class="main_btn" href="" th:attr="ng-click=@{|cart.add(${item.id})|}">Thêm Vào Giỏ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h3> <i class="fa fa-list" aria-hidden="true"></i> Sản phẩm liên quan </h3>
+        <div class="row">
+            <div class="col-lg-4 col-md-7" th:each="p : ${items}">
+                <div class="single-product">
+                    <div class="card" style="width: 14rem">
+                        <img class="mx-auto d-block img-fluid w-75"  th:src="@{'/utilities/img/images/' + ${p.image}}" style="height: 150px; max-width: 80%;" />
+                        <div class="card-body">
+                            <h5 class="card-title"><a th:href="@{|/product/detail/| + ${p.id} }">
+                                    <h4>[[${p.name}]]</h4>
+                                </a></h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><b>[[${ #numbers.formatDecimal ( p.price , 0 , 'COMMA' , 2 , 'POINT')}]] VNĐ</b></li>
+                            <li class="list-group-item"><a th:href="@{|/product/detail/| + ${p.id} }"> Xem chi tiết </a>
+                            </li>
+                        </ul>
+                        <div class="card-footer">
+                            <button class="btn btn-success" th:attr="ng-click=@{|cart.add(${p.id})|}"> <i
+                                    class="fa fa-shopping-cart" aria-hidden="true"></i> Thêm Vào Giỏ </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

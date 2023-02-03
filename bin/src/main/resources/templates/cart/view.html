@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www/thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{:: main})}">
+
+<body>
+    <main>
+        <!--================Cart Area =================-->
+        <div class="card" th:fragment="shopping-cart">
+            <div class="card-header"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping cart </div>
+            <div class="card-body">
+                <div class="cart_inner">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Tên sản phẩm</th>
+                                    <th scope="col">Hình ảnh</th>
+                                    <th scope="col">Giá tiền</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Tổng tiền</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in cart.items">
+                                    <td>{{item.id}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td><img src="/utilities/img/images/{{item.image}}" alt="" style="width: 50px;" /></td>
+                                    <td>${{item.price | number : 2}} VNĐ</td>
+                                    <td><input type="number" class="form-control" ng-change="cart.saveToLocalStorage()"
+                                            ng-model="item.qty" min="1" max="99" step="1"
+                                            onchange="updateCartItem( this )" /></td>
+                                    <td>${{item.qty*item.price | number : 2}} VNĐ</td>
+                                    <td>
+                                        <button class="btn btn-danger" ng-click="cart.remove(item.id)"> <i class="fa fa-trash"></i> Remove</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="my-2 my-lg-0">
+                    <button class="btn btn-primary" ng-click="cart.clear()"> <i class="fa fa-check-circle-o" aria-hidden="true"></i>  Clear </button>
+                    <button class="btn btn-success" > <a style="color: white;" th:href="@{/order/checkout}"> <i class="fa fa-arrow-circle-right" > </i>  Check out </a> </button>
+                </div>
+            </div>
+        </div>
+
+
+        <!--================End Cart Area =================-->
+    </main>
+
+    <script>
+        const updateCartItem = e => {
+            e.value = Math.floor(Number(e.value))
+            if (e.value > Number(e.max)) {
+                e.value = e.max
+                alert("Số lượng sản phẩm không được lớn hơn 99!")
+            } else if (e.value < Number(e.min)) {
+                e.value = e.min
+                alert("Số lượng sản phẩm không được bé hơn 1!")
+            }
+            e.parentElement.submit()
+        }
+    </script>
+    
+</body>
+
+</html>

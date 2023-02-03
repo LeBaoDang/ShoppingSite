@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www/thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{:: main})}">
+
+<body>
+	<main class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-7" th:each="product : ${item}">
+				<div class="single-product">
+					<div class="card panel-body" style="width: 14rem">
+						<img class="mx-auto d-block img-fluid w-75" style="height: 150px; max-width: 80%;"
+								th:src="@{'/utilities/img/images/' + ${product.image}}"/>
+						<div class="card-body">
+							<h5 class="card-title"><a th:href="@{|/product/detail/| + ${product.id} }">
+								<h4>[[${product.name}]]</h4>
+							</a></h5>
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item"><b>[[${ #numbers.formatDecimal ( product.price , 0 , 'COMMA' , 2 , 'POINT')}]] VNĐ</b></li>
+							<li class="list-group-item"><a th:href="@{|/product/detail/| + ${product.id} }"> Xem chi tiết </a></li>
+						</ul>
+						<div class="card-footer">
+							<button class="btn btn-success" th:attr="ng-click=@{|cart.add(${product.id})|}" > <i class="fa fa-shopping-cart" aria-hidden="true"></i> Thêm Vào Giỏ </button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

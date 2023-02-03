@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,7 @@ public class OrderServiceImpl implements OrderService {
 	OrderDetailRepo orderDetailRepo;
 	
 	@Override
+	@Transactional(rollbackOn = { Exception.class, Throwable.class })
 	public Order create(JsonNode orderData) {
 
 		ObjectMapper mapper = new ObjectMapper();

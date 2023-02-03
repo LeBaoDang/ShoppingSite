@@ -7,17 +7,21 @@ import java.util.List;
 
 public interface ProductService {
 
-    List<Product> findAllProduct();
+	public List<Product> findAllProduct();
 
-    Product GetOneProduct(Long id);
+	public Product getOneProduct(Long id);
 
     // phan trang
-    Page<Product> findAllProduct(int pageSize, int pageNumber) throws Exception;
+	public Page<Product> findAllProduct(int pageSize, int pageNumber) throws Exception;
 
     // phan trang product category
-    Page<Product> findCategoryProduct(String categoryId, int pageSize, int pageNumber) throws Exception;
+	public Page<Product> findCategoryProduct(String categoryId, int pageSize, int pageNumber) throws Exception;
 
-	List<Product> findAll();
+	public List<Product> findAll();
 
-	Product createProduct(Product product);
+	public Product createProduct(Product product);
+	
+	public Product updateProduct(Product product);
+	
+	public void deleteProduct(Long id);
 }

@@ -6,6 +6,6 @@ import com.store.entity.Role;
 
 public interface RoleService {
 	
-	List<Role> findAll();
+	public List<Role> findAll();
 	
 }
