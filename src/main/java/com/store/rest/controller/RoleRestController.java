@@ -22,9 +22,9 @@ public class RoleRestController {
 	@GetMapping
 	public ResponseEntity< List<Role> > findAll(){
 		try {
-			return new ResponseEntity<List<Role>>(roleService.findAll(), HttpStatus.OK);
+			return new ResponseEntity<>(roleService.findAll(), HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<List<Role>>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 	

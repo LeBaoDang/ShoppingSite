@@ -1,6 +1,9 @@
 package com.store.repository;
 
+import com.store.entity.Account;
 import com.store.entity.Authority;
+
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -16,5 +19,8 @@ public interface AuthorityRepo extends JpaRepository<Authority,Long> {
 	@Transactional
 	@Query(value = "INSERT INTO Authorities(username, roleId) VALUES(?1, 'CUST')", nativeQuery = true)
 	void register(String username);
+	
+	@Query("SELECT DISTINCT a FROM Authority a WHERE a.account IN ?1")
+	List<Authority> authoritiesOf(List<Account> accounts);
 	
 }

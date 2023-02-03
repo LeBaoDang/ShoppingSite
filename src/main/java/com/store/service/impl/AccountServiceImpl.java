@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -46,6 +47,16 @@ public class AccountServiceImpl implements AccountService {
         accountRepo.save(requestAccount);
         authorityRepo.register(requestAccount.getUsername());
 		return requestAccount;
+	}
+
+	@Override
+	public List<Account> getAdministrators() {
+		return accountRepo.getAdministrators();
+	}
+
+	@Override
+	public List<Account> findAll() {
+		return accountRepo.findAll();
 	}
 
 }
