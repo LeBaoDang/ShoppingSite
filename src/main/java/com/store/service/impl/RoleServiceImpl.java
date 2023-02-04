@@ -1,23 +1,21 @@
 package com.store.service.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.store.entity.Role;
 import com.store.repository.RoleRepo;
 import com.store.service.RoleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
-public class RoleServiceImpl implements RoleService{
+public class RoleServiceImpl implements RoleService {
 
-	@Autowired
-	RoleRepo roleRepo;
-	
-	@Override
-	public List<Role> findAll() {
-		return roleRepo.findAll();
-	}
+    @Autowired
+    RoleRepo roleRepo;
 
+    @Override
+    public List<Role> findAll() {
+        return roleRepo.findAll();
+    }
 }
