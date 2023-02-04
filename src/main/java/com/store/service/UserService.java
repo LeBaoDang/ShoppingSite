@@ -23,7 +23,7 @@ public class UserService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
+		/*
 		try {
 			Account account = accountService.findById(username);
 			// tạo UserDetails từ Account
@@ -36,8 +36,8 @@ public class UserService implements UserDetailsService {
 					.roles(roles).build();
 		} catch (Exception e) {
 			throw new UsernameNotFoundException(username + "not found");
-		}
-		 /*
+		} */
+		 
 		try {
 			Account user = accountService.findById(username);
 			String password = user.getPassword();
@@ -45,7 +45,7 @@ public class UserService implements UserDetailsService {
 			return User.withUsername(username).password(password).roles(role).build();
 		} catch (Exception ex) {
 			throw new UsernameNotFoundException(username + "not found");
-		} */
+		} 
 
 	}
 

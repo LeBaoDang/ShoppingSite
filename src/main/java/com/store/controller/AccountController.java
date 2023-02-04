@@ -54,7 +54,7 @@ public class AccountController {
         	try {
                 accountService.saveAccount(accountForm); 
                 model.addAttribute("message", " <b style=\"position: absolute;  right: 0px;  width: 300px; color: chartreuse \" > Đăng ký thành công! </b> "); 
-                return "redirect:/security/login/form";
+                return "/security/register";
             } catch (Exception ex) {
                 model.addAttribute("message", "<b style=\"position: absolute;  right: 0px;  width: 300px; color: red\" > Tài khoản này đã được sử dụng! </b>");
                 return "/security/register";
