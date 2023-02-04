@@ -69,7 +69,7 @@ public class ProductServiceImpl implements ProductService {
 		
 		Optional<Product> optionProduct = productRepo.findById(product.getId());
 		if(!optionProduct.isPresent()) {
-			throw new ResourceNotFoundException(String.format("product.already.exist.with.id:%s", product.getId()));
+			throw new ResourceNotFoundException(String.format("product.does.not.exist.with.id:%s", product.getId()));
 		}
 		
 		return productRepo.save(product);
@@ -82,7 +82,7 @@ public class ProductServiceImpl implements ProductService {
 		
 		Optional<Product> optionProduct = productRepo.findById(id);
 		if(!optionProduct.isPresent()) {
-			throw new ResourceNotFoundException(String.format("product.already.exist.with.id:%s", id));
+			throw new ResourceNotFoundException(String.format("product.does.not.exist.with.id:%s", id));
 		}
 		
 		productRepo.deleteById(id);

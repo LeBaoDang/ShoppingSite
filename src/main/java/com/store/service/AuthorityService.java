@@ -5,8 +5,6 @@ import java.util.List;
 
 import com.store.entity.Authority;
 
-
-
 public interface AuthorityService {
 
 	public List<Authority> findAuthoritiesOfAdministrators();
@@ -15,7 +13,6 @@ public interface AuthorityService {
 
 	public Authority create(Authority auth);
 
-	public void delete(Integer id);
+	public void delete(Long id);
 
-	public void register(String username);
 }

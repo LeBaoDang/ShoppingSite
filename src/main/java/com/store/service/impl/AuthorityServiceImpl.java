@@ -2,6 +2,9 @@ package com.store.service.impl;
 
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +14,7 @@ import com.store.entity.Authority;
 import com.store.repository.AccountRepo;
 import com.store.repository.AuthorityRepo;
 import com.store.service.AuthorityService;
+import com.store.service.impl.exception.ResourceNotFoundException;
 
 
 @Service
@@ -35,20 +39,23 @@ public class AuthorityServiceImpl implements AuthorityService {
 	}
 
 	@Override
+	@Transactional(rollbackOn = { Exception.class, Throwable.class })
 	public Authority create(Authority auth) {
 		return authorityRepo.save(auth);
 	}
 
 
 	@Override
-	public void register(String username) {
-		authorityRepo.register(username);
-	}
-
-	@Override
-	public void delete(Integer id) {
-		// TODO Auto-generated method stub
+	@Transactional(rollbackOn = { Exception.class, Throwable.class })
+	public void delete(Long id) {
 		
+		Optional<Authority> authorityOption = authorityRepo.findById(id);
+		
+		if(!authorityOption.isPresent()) {
+			throw new ResourceNotFoundException(String.format("authority.does.not.exist.with.id:%s", id));
+		}
+		
+		authorityRepo.deleteById(id);
 	}
 		
 }
