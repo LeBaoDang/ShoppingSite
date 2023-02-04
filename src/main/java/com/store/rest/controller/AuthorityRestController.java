@@ -45,7 +45,7 @@ public class AuthorityRestController {
 		try {
 			return new ResponseEntity<Authority>(authorityService.create(auth), HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<Authority>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Authority>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -55,7 +55,7 @@ public class AuthorityRestController {
 			authorityService.delete(id);
 			return new ResponseEntity<Void> (HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<Void> (HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Void> (HttpStatus.BAD_REQUEST);
 		}
 	}
 

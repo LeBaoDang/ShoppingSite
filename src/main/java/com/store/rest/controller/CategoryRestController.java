@@ -25,7 +25,7 @@ public class CategoryRestController {
         try {
             return new ResponseEntity<> (categoryService.findAll(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<> (HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<> (HttpStatus.NOT_FOUND);
         }
     }
 
