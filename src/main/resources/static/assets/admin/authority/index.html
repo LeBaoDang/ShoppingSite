@@ -1,26 +1,23 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col"></th>
-            <th scope="col" ng-repeat="role in roles">{{role.name}}</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="p in items">
-            <td>{{p.id}}</td>
-            <td>{{p.name}}</td>
-            <td><img src="/utilities/img/images/{{p.image}}" style="width: 50px;"></td>
-            <td>{{p.price | number : 2}} VNĐ</td>
-            <td>{{p.createDate | date : 'dd-MM-yyyy'}}</td>
-            <td>{{p.category.name}}</td>
-            <td>{{p.available ? 'Yes' : 'No'}}</td>
-            <td>
-                <div>
-                    <button class="btn btn-primary" ng-click="edit(p)"> <i class="fa fa-check-circle-o"
-                            aria-hidden="true"></i> edit</button>
-                    <button class="btn btn-danger" ng-click="delete(p)"> <i class="fa fa-trash"></i> remove</button>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="card">
+    <div class="card-header">
+        Phan Quyen Su Dung
+    </div>
+    <div class="card-body">
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th ng-repeat="role in roles" class="text-center">{{role.name}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="acc in admins">
+                    <td>{{acc.fullname}}</td>
+                    <th ng-repeat="role in roles" class="text-center">
+                        <input ng-checked="authority_of(acc,role)" ng-click="authority_changed(acc, role)" type="checkbox">
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

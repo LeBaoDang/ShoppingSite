@@ -20,6 +20,7 @@ public interface AuthorityRepo extends JpaRepository<Authority,Long> {
 	@Query(value = "INSERT INTO Authorities(username, roleId) VALUES(?1, 'CUST')", nativeQuery = true)
 	void register(String username);
 	
+	// lấy ra các quyền đã được cấp cho nhóm tài khoản account (admin)
 	@Query("SELECT DISTINCT a FROM Authority a WHERE a.account IN ?1")
 	List<Authority> authoritiesOf(List<Account> accounts);
 	

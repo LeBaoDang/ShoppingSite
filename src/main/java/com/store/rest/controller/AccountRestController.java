@@ -24,7 +24,7 @@ public class AccountRestController {
 	AccountService accountService;
 	
 	@GetMapping
-	public ResponseEntity<List<Account>> getAccounts(@RequestParam("admin") Optional<Boolean> admin) {
+	public ResponseEntity< List<Account> > getAccounts(@RequestParam("admin") Optional<Boolean> admin) {
 		try {
 			if(admin.orElse(false)) {
 				return new ResponseEntity<List<Account>>(accountService.getAdministrators(), HttpStatus.OK);

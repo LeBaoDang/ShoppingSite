@@ -19,13 +19,18 @@ public class RoleRestController {
 	@Autowired
 	RoleService roleService;
 	
-	@GetMapping
-	public ResponseEntity< List<Role> > findAll(){
-		try {
-			return new ResponseEntity<>(roleService.findAll(), HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+//	@GetMapping
+//	public ResponseEntity< List<Role> > findAll(){
+//		try {
+//			return new ResponseEntity<>(roleService.findAll(), HttpStatus.OK);
+//		} catch (Exception e) {
+//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//		}
+//	}
+	
+	@GetMapping("/list")
+	public List< Role > findAll() {
+		return roleService.findAll();
 	}
 	
 }
