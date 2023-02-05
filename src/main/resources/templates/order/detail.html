@@ -49,9 +49,9 @@
                       <tr>
                         <td>[[${ orderDetail.product.id }]]</td>
                         <td>[[${ orderDetail.product.name }]]</td>
-                        <td>[[${ #numbers.formatDecimal ( orderDetail.product.price , 0 , 'COMMA' , 2 , 'POINT')}]] VNĐ</td>
+                        <td>[[${ #numbers.formatDecimal ( orderDetail.product.price , 0 , 'COMMA' , 6 , 'POINT')}]] VNĐ</td>
                         <td>[[${ orderDetail.quantity }]]</td>
-                        <td>[[${ #numbers.formatDecimal ( orderDetail.product.price * orderDetail.quantity , 0 , 'COMMA' , 2 , 'POINT')}]] VNĐ</td>
+                        <td>[[${ #numbers.formatDecimal ( orderDetail.product.price * orderDetail.quantity , 0 , 'COMMA' , 6 , 'POINT')}]] VNĐ</td>
                       </tr>
                     </tbody>
                   </table>
