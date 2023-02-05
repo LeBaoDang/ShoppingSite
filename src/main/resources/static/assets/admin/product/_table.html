@@ -25,9 +25,9 @@
 					<div class="btn-group btn-group-xs">
 						<button ng-click="edit(item)"
 							class="btn btn-warning glyphicon glyphicon-edit"> <i class="fa fa-check-circle-o"
-                            aria-hidden="true"></i> Edit </button>
+                            aria-hidden="true"></i> Chỉnh sửa </button>
 						<button ng-click="delete(item)"
-							class="btn btn-danger glyphicon glyphicon-trash"> <i class="fa fa-trash"></i> remove </button>
+							class="btn btn-danger glyphicon glyphicon-trash"> <i class="fa fa-trash"></i> Xóa </button>
 					</div>
 				</td>
 			</tr>
@@ -35,18 +35,18 @@
 	</table>
 	<div class="panel-footer text-center">
 		<button ng-click="pager.first()" class="btn btn-danger">
-			<b class="glyphicon glyphicon-hand-up"> First </b>
+			<b class="glyphicon glyphicon-hand-up"> Về đầu </b>
 		</button>
 		<button ng-click="pager.prev()" class="btn btn-primary">
-			<b class="glyphicon glyphicon-hand-left"> Prev </b>
+			<b class="glyphicon glyphicon-hand-left"> Trước </b>
 		</button>
 		<button class="btn btn-success">{{pager.page + 1}} of
 			{{pager.count}}</button>
 		<button ng-click="pager.next()" class="btn btn-primary">
-			<b class="glyphicon glyphicon-hand-right"> Next </b>
+			<b class="glyphicon glyphicon-hand-right"> Kế tiếp </b>
 		</button>
 		<button ng-click="pager.last()" class="btn btn-danger">
-			<b class="glyphicon glyphicon-hand-down"> Last </b>
+			<b class="glyphicon glyphicon-hand-down"> Về cuối </b>
 		</button>
 	</div>
 </div>

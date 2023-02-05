@@ -37,58 +37,15 @@
         <header class="header_area">
             <div th:replace="/layout/_menu.html"></div>
         </header>
-       
-        <b><hr></b>
-        
-        <br>
-
+        <b> <hr> </b>
+        <div th:replace="/layout/_category.html"></div> <br>
         <div class="container">
-            <div class="row">
-                <!-- 
-                <div class="col-sm-9">
-                    <div class="article ">
-                        <div th:replace="${main}"></div>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="article ">
-                        <div th:replace="/layout/_catego.html"></div>
-                    </div>
-                </div>-->
-          
-                <div class="col-lg-8 posts-list">
-                    <div class="single-post">
-                        <div th:replace="${main}"></div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div>
-                        <aside>
-                            <div th:replace="/layout/_category.html"></div>
-                        </aside>
-                    </div>
-                </div>
-               
-            </div>
-        </div>
-
-        <br>
-        
-        <div th:replace="/layout/_page.html"></div>
-
-        <!-- <div th:replace="/layout/_category.html"></div> -->
-
-        <br>
-
-        <!-- <section class="inspired_product_area section_gap_bottom_custom">
             <div th:replace="${main}"></div>
-        </section> -->
-    
+        </div> <br>
+        <div th:replace="/layout/_page.html"></div> <br>
         <footer>
             <div th:replace="/layout/_footer.html"></div>
-        </footer>  
+        </footer>
     </div>
 
     <script src="/assets/shoppingCartApp/shopping-cart-app.js"></script>
