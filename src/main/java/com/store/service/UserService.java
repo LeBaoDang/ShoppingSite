@@ -40,10 +40,10 @@ public class UserService implements UserDetailsService {
 		 */
 		
 		try {
-			// tk người dùng nhập vào
 			Account user = accountService.findById(username);
 			String password = user.getPassword();
-			String role = String.valueOf( user.getAuthorities().getClass() );
+			String role[] = user.getAuthorities().stream().map(au -> au.getRole().getId())
+					.collect(Collectors.toList()).toArray(new String[0]);
 			return User.withUsername( username ).password( password ).roles( role ).build() ;
 		} catch (Exception ex) {
 			throw new UsernameNotFoundException(username + "not found");
