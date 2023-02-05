@@ -41,6 +41,8 @@ public class Product  implements Serializable{
 	
 	private Boolean available;
 	
+	private String Description;
+	
 	@ManyToOne
 	@JoinColumn(name = "Categoryid")
 	private Category category;
