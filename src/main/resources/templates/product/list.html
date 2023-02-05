@@ -15,7 +15,7 @@
 							</a></h5>
 						</div>
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item"><b>[[${ #numbers.formatDecimal ( product.price , 0 , 'COMMA' , 6 , 'POINT')}]] VNĐ</b></li>
+							<li class="list-group-item"><b>[[${ #numbers.formatDecimal ( product.price , 0 , 'COMMA' , 2 , 'POINT')}]] VNĐ</b></li>
 							<li class="list-group-item"><a th:href="@{|/product/detail/| + ${product.id} }"> Xem chi tiết </a></li>
 						</ul>
 						<div class="card-footer">
