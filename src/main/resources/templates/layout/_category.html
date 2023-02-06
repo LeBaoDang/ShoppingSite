@@ -1,13 +1,13 @@
-<div class="blog_right_sidebar">
-    <div class="card">
-        <aside class="single_sidebar_widget post_category_widget">
-            <h4> <i class="fa fa-list" aria-hidden="true"></i> Danh mục sản phẩm</h4>
-            <hr>
-            <ul class="list cat-list">
-                <a th:each="c: ${cates}" th:href="@{|/product/list?cid=${c.id}|}" class="d-flex">
-                    <p>[[${c.name}]]</p>
-                </a>
-            </ul>
-        </aside>
+<nav class="navbar navbar-light bg-light">
+
+    <div>
+        <button class="btn btn-outline-success" th:each=" c : ${cates} ">
+            <a th:href="@{|/product/list?cid=${c.id}|}"> <b><span>[[${c.name}]]</span></b>  </a>
+        </button>
     </div>
-</div>
+
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>

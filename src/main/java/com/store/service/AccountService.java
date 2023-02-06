@@ -3,6 +3,7 @@ package com.store.service;
 import java.util.List;
 
 import com.store.entity.Account;
+import com.store.entity.Role;
 
 public interface AccountService {
 
@@ -13,5 +14,5 @@ public interface AccountService {
 	public List<Account> getAdministrators();
 	
 	public List<Account> findAll();
-
+	
 }

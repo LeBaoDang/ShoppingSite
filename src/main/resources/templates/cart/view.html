@@ -26,11 +26,11 @@
                                     <td>{{item.id}}</td>
                                     <td>{{item.name}}</td>
                                     <td><img src="/utilities/img/images/{{item.image}}" alt="" style="width: 50px;" /></td>
-                                    <td>${{item.price | number : 2}} VNĐ</td>
+                                    <td>${{item.price | number }} VNĐ</td>
                                     <td><input type="number" class="form-control" ng-change="cart.saveToLocalStorage()"
                                             ng-model="item.qty" min="1" max="99" step="1"
                                             onchange="updateCartItem( this )" style="width: 75px;"/></td>
-                                    <td>${{item.qty*item.price | number : 2}} VNĐ</td>
+                                    <td>${{item.qty*item.price | number }} VNĐ</td>
                                     <td>
                                         <button class="btn btn-danger" ng-click="cart.remove(item.id)"> <i class="fa fa-trash"></i> Remove</button>
                                     </td>

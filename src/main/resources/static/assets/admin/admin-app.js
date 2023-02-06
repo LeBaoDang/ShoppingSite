@@ -15,6 +15,20 @@ app.config(function ($routeProvider){
         controller: "authority-ctrl"
     })
     .otherwise ({
-        template: " Admin "
+        templateUrl: "/assets/admin/admin.html"
     })
 })
+
+app.controller( "admin-ctrl" , function( $scope , $http ){
+	$scope.loggedInStaff = {} 
+	$scope.role = []
+	$scope.initialize = function(){
+		$http.get( "/rest/accounts/logged-in" ).then( resp => {
+			$scope.loggedInStaff = resp.data
+		} )
+		$http.get( `/rest/accounts/logged-inn` ).then( resp => {
+			$scope.role = resp.data
+		})
+	}
+	$scope.initialize()
+} )

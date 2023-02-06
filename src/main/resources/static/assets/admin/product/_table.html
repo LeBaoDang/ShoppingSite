@@ -17,7 +17,7 @@
 				<td>{{item.id}}</td>
 				<td>{{item.name}}</td>
                 <td><img src="/utilities/img/images/{{item.image}}" style="width: 50px;"></td>
-				<td>{{item.price | number : 2}} VNĐ</td>
+				<td>{{item.price | number }} VNĐ</td>
 				<td>{{item.createDate | date : 'dd-MM-yyyy'}}</td>
 				<td>{{item.category.name}}</td>
 				<td>{{item.available ? 'Yes' : 'No'}}</td>
@@ -35,18 +35,18 @@
 	</table>
 	<div class="panel-footer text-center">
 		<button ng-click="pager.first()" class="btn btn-danger">
-			<b class="glyphicon glyphicon-hand-up"> Về đầu </b>
+			 <i class="fa fa-backward"></i> 
 		</button>
 		<button ng-click="pager.prev()" class="btn btn-primary">
-			<b class="glyphicon glyphicon-hand-left"> Trước </b>
+			 <i class="fa fa-hand-o-left"></i> 
 		</button>
 		<button class="btn btn-success">{{pager.page + 1}} of
 			{{pager.count}}</button>
 		<button ng-click="pager.next()" class="btn btn-primary">
-			<b class="glyphicon glyphicon-hand-right"> Kế tiếp </b>
+			 <i class="fa fa-hand-o-right"></i> 
 		</button>
 		<button ng-click="pager.last()" class="btn btn-danger">
-			<b class="glyphicon glyphicon-hand-down"> Về cuối </b>
+			 <i class="fa fa-forward"></i> 
 		</button>
 	</div>
 </div>

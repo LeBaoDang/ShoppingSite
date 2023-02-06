@@ -2,8 +2,13 @@
     <div class="row" th:if="${totalPages > 1}">
         <div class="col-md-12">
             <ul class="pagination">
+
                 <li class="page-item" th:class="${currentPage == 1 ? 'disabled' : '' }" > 
-                    <a class="page-link" th:href="@{${currentPage > 1} ? ${'?page=' + (currentPage - 1)}}">Trướt</a>
+                    <a class="page-link" th:href="@{${currentPage > 1} ? ${'?page=' + (currentPage - currentPage + 1)}}"> <i class="fa fa-backward"></i> </a>
+                </li>
+
+                <li class="page-item" th:class="${currentPage == 1 ? 'disabled' : '' }" > 
+                    <a class="page-link" th:href="@{${currentPage > 1} ? ${'?page=' + (currentPage - 1)}}"> <i class="fa fa-hand-o-left"></i>  </a>
                 </li>
                 
                 <li class="page-item" th:each="i : ${#numbers.sequence(1,totalPages)}" th:class="${currentPage == i ? 'active' : ''}">
@@ -11,8 +16,13 @@
                 </li>
                 
                 <li class="page-item" th:class="${currentPage == totalPages ? 'disabled' : ''}">
-                    <a class="page-link" th:href="@{${currentPage < totalPages} ? ${ '?page=' + (currentPage + 1)}}">Kế Tiếp</a>
+                    <a class="page-link" th:href="@{${currentPage < totalPages} ? ${ '?page=' + (currentPage + 1)}}"> <i class="fa fa-hand-o-right"></i>  </a>
                 </li>
+
+                <li class="page-item" th:class="${currentPage == totalPages ? 'disabled' : ''}">
+                    <a class="page-link" th:href="@{${currentPage < totalPages} ? ${ '?page=' + totalPages}}"> <i class="fa fa-forward"></i>  </a>
+                </li>
+
             </ul>
         </div>
     </div>
@@ -20,9 +30,14 @@
     <div class="row" th:if="${totalPagesCategory > 1}">
         <div class="col-md-12">
             <ul class="pagination">
+
+                <li class="page-item" th:class="${currentPageCategory == 1 ? 'disabled' : '' }" >
+                    <a class="page-link" th:href="@{ ${currentPageCategory > 1} ? ${ '?cid=' + categoryId + '&&page=' + (currentPageCategory - currentPageCategory + 1)} }"> <i class="fa fa-backward"></i> </a>
+                </li>
+
                                                             <!--http://localhost:8080/product/list?cid=1001 -->
                 <li class="page-item" th:class="${currentPageCategory == 1 ? 'disabled' : '' }" >
-                    <a class="page-link" th:href="@{ ${currentPageCategory > 1} ? ${ '?cid=' + categoryId + '&&page=' + (currentPageCategory - 1)} }">Trước</a>
+                    <a class="page-link" th:href="@{ ${currentPageCategory > 1} ? ${ '?cid=' + categoryId + '&&page=' + (currentPageCategory - 1)} }"> <i class="fa fa-hand-o-left"></i> </a>
                 </li>
             
                 <li class="page-item" th:each="i : ${#numbers.sequence(1,totalPagesCategory)}" th:class="${currentPageCategory == i ? 'active' : ''}">
@@ -30,10 +45,15 @@
                 </li>
                 
                 <li class="page-item" th:class="${currentPageCategory == totalPagesCategory ? 'disabled' : ''}">
-                    <a class="page-link" th:href="@{ ${currentPageCategory < totalPagesCategory} ? ${ '?cid=' + categoryId + '&&page=' + (currentPageCategory + 1)} }">Kế tiếp</a>
+                    <a class="page-link" th:href="@{ ${currentPageCategory < totalPagesCategory} ? ${ '?cid=' + categoryId + '&&page=' + (currentPageCategory + 1)} }"> <i class="fa fa-hand-o-right"></i> </a>
+                </li>
+
+                <li class="page-item" th:class="${currentPageCategory == totalPagesCategory ? 'disabled' : ''}">
+                    <a class="page-link" th:href="@{ ${currentPageCategory < totalPagesCategory} ? ${ '?cid=' + categoryId + '&&page=' + (currentPageCategory + totalPagesCategory)} }"> <i class="fa fa-forward"></i> </a>
                 </li>
 
             </ul>
         </div>
     </div>
 </div>
+
