@@ -22,7 +22,7 @@
             <ul class="pagination">
                                                             <!--http://localhost:8080/product/list?cid=1001 -->
                 <li class="page-item" th:class="${currentPageCategory == 1 ? 'disabled' : '' }" >
-                    <a class="page-link" th:href="@{ ${currentPageCategory > 1} ? ${ '?cid=' + categoryId + '&&page=' + (currentPageCategory - 1)} }">Previous</a>
+                    <a class="page-link" th:href="@{ ${currentPageCategory > 1} ? ${ '?cid=' + categoryId + '&&page=' + (currentPageCategory - 1)} }">Trước</a>
                 </li>
             
                 <li class="page-item" th:each="i : ${#numbers.sequence(1,totalPagesCategory)}" th:class="${currentPageCategory == i ? 'active' : ''}">
@@ -30,7 +30,7 @@
                 </li>
                 
                 <li class="page-item" th:class="${currentPageCategory == totalPagesCategory ? 'disabled' : ''}">
-                    <a class="page-link" th:href="@{ ${currentPageCategory < totalPagesCategory} ? ${ '?cid=' + categoryId + '&&page=' + (currentPageCategory + 1)} }">Next</a>
+                    <a class="page-link" th:href="@{ ${currentPageCategory < totalPagesCategory} ? ${ '?cid=' + categoryId + '&&page=' + (currentPageCategory + 1)} }">Kế tiếp</a>
                 </li>
 
             </ul>

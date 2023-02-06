@@ -1,14 +1,13 @@
-<div class="container">
-    <div class="blog_right_sidebar">
-        <div class="card" style="margin-top: 5px;">
-            <aside class="single_sidebar_widget post_category_widget">
-                <h4> <i class="fa fa-list" aria-hidden="true"></i> Danh mục sản phẩm</h4> <hr>
-                <ul class="list cat-list">
-                    <a th:each="c: ${cates}" th:href="@{|/product/list?cid=${c.id}|}" class="d-flex">
-                        <p>[[${c.name}]]</p>
-                    </a>
-                </ul>
-            </aside>
-        </div>
+<div class="blog_right_sidebar">
+    <div class="card">
+        <aside class="single_sidebar_widget post_category_widget">
+            <h4> <i class="fa fa-list" aria-hidden="true"></i> Danh mục sản phẩm</h4>
+            <hr>
+            <ul class="list cat-list">
+                <a th:each="c: ${cates}" th:href="@{|/product/list?cid=${c.id}|}" class="d-flex">
+                    <p>[[${c.name}]]</p>
+                </a>
+            </ul>
+        </aside>
     </div>
 </div>
