@@ -24,6 +24,6 @@ public interface AuthorityRepo extends JpaRepository<Authority,Long> {
 	@Query("SELECT DISTINCT a FROM Authority a WHERE a.account IN ?1")
 	List<Authority> authoritiesOf(List<Account> accounts);
 	
-//	@Query(value = "select * from Authority where Username = ?1 ", nativeQuery = true)
-//	Authority getAuthority(String username);
+	@Query(value = "select * from Authorities where Username = ?1 ", nativeQuery = true)
+	List<Authority> findAuthority(String username);
 }

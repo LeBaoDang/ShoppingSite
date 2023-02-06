@@ -21,13 +21,13 @@ app.config(function ($routeProvider){
 
 app.controller( "admin-ctrl" , function( $scope , $http ){
 	$scope.loggedInStaff = {} 
-	$scope.role = []
+	$scope.roles = []
 	$scope.initialize = function(){
-		$http.get( "/rest/accounts/logged-in" ).then( resp => {
+		$http.get( "/rest/accounts/login-in-account" ).then( resp => {
 			$scope.loggedInStaff = resp.data
 		} )
-		$http.get( `/rest/accounts/logged-inn` ).then( resp => {
-			$scope.role = resp.data
+		$http.get( "/rest/accounts/login-in-account-role" ).then( resp => {
+			$scope.roles = resp.data
 		})
 	}
 	$scope.initialize()

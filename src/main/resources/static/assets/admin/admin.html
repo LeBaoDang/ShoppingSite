@@ -13,7 +13,7 @@
 		<h2 class="mb-3 w-50">Thông tin của bạn<hr></h2>
 		<h4>Mã nhân viên: <b>{{ loggedInStaff.username }}</b></h4>
 		<h4>Họ và tên: <b>{{ loggedInStaff.fullname }}</b></h4>
-		<h4>Vai trò: <b class="text-danger">{{ loggedInStaff.authorities.role.name }}</b></h4>
+		<h4>Vai trò: <b class="text-danger" ng-repeat="c in roles">{{ c.role.name }}</b></h4>
 		<h4>Email: <b>{{ loggedInStaff.email }}</b></h4>
 	</div>
 </div>

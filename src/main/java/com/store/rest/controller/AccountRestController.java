@@ -56,20 +56,18 @@ public class AccountRestController {
 	}
 	
 	
-	@GetMapping("logged-in")
+	@GetMapping("login-in-account")
 	public Account getdn() {
 		Account account = accountService.findById(request.getUserPrincipal().getName());
-		account.getAuthorities().stream().map(au -> au.getRole().getId())
-				.collect(Collectors.toList()).toArray(new String[0]);
 		return account;
 	}
 	
-	@GetMapping("logged-inn")
-	public String[] role(){
+	@GetMapping("login-in-account-role")
+	public List<Authority> role(){
 		Account account = accountService.findById(request.getUserPrincipal().getName());
-		String role[] =  account.getAuthorities().stream().map(au -> au.getRole().getId())
-				.collect(Collectors.toList()).toArray(new String[0]);
-		return role ;
+		String username = account.getUsername();
+		List<Authority> authority = repo.findAuthority(username); 
+		return authority ;
 	}
 		
 }
