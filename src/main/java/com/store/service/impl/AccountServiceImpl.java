@@ -1,6 +1,7 @@
 package com.store.service.impl;
 
-import com.store.dto.requestdto.AccountDto;
+import com.store.dto.reponsedto.AccountReponseDto;
+import com.store.dto.requestdto.AccountRequestDto;
 import com.store.entity.Account;
 import com.store.repository.AccountRepo;
 import com.store.repository.AuthorityRepo;
@@ -55,7 +56,7 @@ public class AccountServiceImpl implements AccountService {
 	 * Error
 	 */
 	@Transactional(rollbackOn = { Exception.class, Throwable.class })
-	public AccountDto saveAccount(AccountDto AccountDto) {
+	public AccountReponseDto saveAccount(AccountRequestDto AccountDto) {
 		Account account = new Account();
 		Optional<Account> optionalAccount = accountRepo.findById(AccountDto.getUsername());
 		if (optionalAccount.isPresent()) {
@@ -71,9 +72,9 @@ public class AccountServiceImpl implements AccountService {
 		
 		authorityRepo.register(account.getUsername());
 		
-		AccountDto accountDto = mapper.map(account, AccountDto.getClass());
+		AccountReponseDto accountReponseDto = mapper.map(account, AccountReponseDto.class);
 		
-		return accountDto;
+		return accountReponseDto;
 	}
 
 	@Override

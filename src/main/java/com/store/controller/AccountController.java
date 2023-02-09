@@ -1,6 +1,6 @@
 package com.store.controller;
 
-import com.store.dto.requestdto.AccountDto;
+import com.store.dto.requestdto.AccountRequestDto;
 import com.store.entity.Account;
 import com.store.service.AccountService;
 import com.store.service.AuthorityService;
@@ -35,7 +35,7 @@ public class AccountController {
     public String createAccount(Model model,
     		@RequestParam("confirmPassword") String confirmPassword, 
     		@RequestParam("password") String password,
-    		@Validated @ModelAttribute("account") AccountDto accountForm, 
+    		@Validated @ModelAttribute("account") AccountRequestDto accountForm, 
     		Errors error){
     	
         if(error.hasErrors()) {
