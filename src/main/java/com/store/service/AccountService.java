@@ -2,14 +2,14 @@ package com.store.service;
 
 import java.util.List;
 
+import com.store.dto.requestdto.AccountDto;
 import com.store.entity.Account;
-import com.store.entity.Role;
 
 public interface AccountService {
 
-	public Account findById(String username);
+	public Account findById(String usernameDto);
 
-	public Account saveAccount(Account requestAccount);
+	public AccountDto saveAccount(AccountDto accountForm);
 	
 	public List<Account> getAdministrators();
 	

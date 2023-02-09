@@ -14,5 +14,7 @@ public interface AuthorityService {
 	public Authority create(Authority auth);
 
 	public void delete(Long id);
+	
+	public List<Authority> findAuthority(String username);
 
 }

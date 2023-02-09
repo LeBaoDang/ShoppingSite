@@ -2,9 +2,7 @@ package com.store.rest.controller;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,16 +10,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.store.entity.Account;
 import com.store.entity.Authority;
-import com.store.entity.Role;
-import com.store.repository.AuthorityRepo;
-import com.store.repository.RoleRepo;
 import com.store.service.AccountService;
 import com.store.service.AuthorityService;
 
@@ -34,10 +28,7 @@ public class AccountRestController {
 	AccountService accountService;
 	
 	@Autowired
-	AuthorityRepo repo;
-	
-	@Autowired
-	RoleRepo roleRepo;
+	AuthorityService authorityService;
 	
 	@Autowired
 	HttpServletRequest request;
@@ -55,6 +46,11 @@ public class AccountRestController {
 		}
 	}
 	
+	@GetMapping("/list")
+	public List<Account> findAll(){
+		return accountService.findAll();
+	}
+	
 	
 	@GetMapping("login-in-account")
 	public Account getdn() {
@@ -65,8 +61,7 @@ public class AccountRestController {
 	@GetMapping("login-in-account-role")
 	public List<Authority> role(){
 		Account account = accountService.findById(request.getUserPrincipal().getName());
-		String username = account.getUsername();
-		List<Authority> authority = repo.findAuthority(username); 
+		List<Authority> authority = authorityService.findAuthority(account.getUsername()); 
 		return authority ;
 	}
 		

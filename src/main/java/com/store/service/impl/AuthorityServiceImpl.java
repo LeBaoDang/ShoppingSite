@@ -57,5 +57,10 @@ public class AuthorityServiceImpl implements AuthorityService {
 		
 		authorityRepo.deleteById(id);
 	}
+
+	@Override
+	public List<Authority> findAuthority(String username) {
+		return authorityRepo.findAuthority(username);
+	}
 		
 }

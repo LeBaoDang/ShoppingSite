@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+	<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th>Mã nhân viên</th>
+				<th>Họ tên</th>
+                <th>Ảnh</th>
+				<th>Email</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in pager.items">
+				<td>{{item.username}}</td>
+				<td>{{item.fullname}}</td>
+                <td><img src="/utilities/img/imagesStaff/{{item.photo}}" style="width: 50px;"></td>
+				<td>{{item.email}}</td>
+				<td>
+					<div class="btn-group btn-group-xs">
+						<button ng-click="edit(item)"
+							class="btn btn-warning glyphicon glyphicon-edit"> <i class="fa fa-check-circle-o"
+                            aria-hidden="true"></i> Chỉnh sửa </button>
+						<button ng-click="delete(item)"
+							class="btn btn-danger glyphicon glyphicon-trash"> <i class="fa fa-trash"></i> Xóa </button>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="panel-footer text-center">
+		<button ng-click="pager.first()" class="btn btn-danger">
+			 <i class="fa fa-backward"></i> 
+		</button>
+		<button ng-click="pager.prev()" class="btn btn-primary">
+			 <i class="fa fa-hand-o-left"></i> 
+		</button>
+		<button class="btn btn-success">{{pager.page + 1}} of
+			{{pager.count}}</button>
+		<button ng-click="pager.next()" class="btn btn-primary">
+			 <i class="fa fa-hand-o-right"></i> 
+		</button>
+		<button ng-click="pager.last()" class="btn btn-danger">
+			 <i class="fa fa-forward"></i> 
+		</button>
+	</div>
+</div>

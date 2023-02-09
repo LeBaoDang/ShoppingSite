@@ -1,14 +1,15 @@
 package com.store.service.impl;
 
+import com.store.dto.requestdto.AccountDto;
 import com.store.entity.Account;
-import com.store.entity.Authority;
-import com.store.entity.Role;
 import com.store.repository.AccountRepo;
 import com.store.repository.AuthorityRepo;
 import com.store.service.AccountService;
 import com.store.service.RoleService;
 import com.store.service.SessionService;
 import com.store.service.impl.exception.ResourceNotFoundException;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,8 @@ public class AccountServiceImpl implements AccountService {
 
 	@Autowired
 	SessionService sessionService;
+	
+	private final ModelMapper mapper = new ModelMapper();
 
 
 	private final BCryptPasswordEncoder bcrytPass = new BCryptPasswordEncoder();
@@ -52,16 +55,25 @@ public class AccountServiceImpl implements AccountService {
 	 * Error
 	 */
 	@Transactional(rollbackOn = { Exception.class, Throwable.class })
-	public Account saveAccount(Account requestAccount) {
-		Optional<Account> optionalAccount = accountRepo.findById(requestAccount.getUsername());
+	public AccountDto saveAccount(AccountDto AccountDto) {
+		Account account = new Account();
+		Optional<Account> optionalAccount = accountRepo.findById(AccountDto.getUsername());
 		if (optionalAccount.isPresent()) {
 			throw new ResourceNotFoundException(
-					String.format("account.already.exist.with.username:%s", requestAccount.getUsername()));
+					String.format("account.already.exist.with.username:%s", AccountDto.getUsername()));
 		}
-		requestAccount.setPassword(bcrytPass.encode(requestAccount.getPassword()));
-		accountRepo.save(requestAccount);
-		authorityRepo.register(requestAccount.getUsername());
-		return requestAccount;
+		
+		AccountDto.setPassword(bcrytPass.encode(AccountDto.getPassword()));
+		
+		account  =  mapper.map(AccountDto, Account.class);
+		
+		accountRepo.save(account);
+		
+		authorityRepo.register(account.getUsername());
+		
+		AccountDto accountDto = mapper.map(account, AccountDto.getClass());
+		
+		return accountDto;
 	}
 
 	@Override

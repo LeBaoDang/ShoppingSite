@@ -6,6 +6,10 @@ app.config(function ($routeProvider){
         templateUrl: "/assets/admin/product/index.html" ,
         controller: "product-ctrl" , 
     })
+    .when("/staff", {
+        templateUrl: "/assets/admin/staff/index.html" ,
+        controller: "staff-ctrl" , 
+    })
     .when("/authorize", {
         templateUrl: "/assets/admin/authority/index.html" ,
         controller: "authority-ctrl" ,
