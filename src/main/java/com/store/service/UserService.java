@@ -44,7 +44,7 @@ public class UserService implements UserDetailsService {
 			String password = user.getPassword();
 			String role[] = user.getAuthorities().stream().map(au -> au.getRole().getId())
 					.collect(Collectors.toList()).toArray(new String[0]);
-			return User.withUsername( username ).password( password ).roles( role ).build() ;
+			return User.withUsername(username).password(password).roles(role).build() ;
 		} catch (Exception ex) {
 			throw new UsernameNotFoundException(username + "not found");
 		} 

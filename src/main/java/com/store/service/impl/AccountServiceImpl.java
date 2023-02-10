@@ -7,7 +7,6 @@ import com.store.repository.AccountRepo;
 import com.store.repository.AuthorityRepo;
 import com.store.service.AccountService;
 import com.store.service.RoleService;
-import com.store.service.SessionService;
 import com.store.service.impl.exception.ResourceNotFoundException;
 
 import org.modelmapper.ModelMapper;
@@ -31,12 +30,8 @@ public class AccountServiceImpl implements AccountService {
 	
 	@Autowired
 	RoleService roleService;
-
-	@Autowired
-	SessionService sessionService;
 	
 	private final ModelMapper mapper = new ModelMapper();
-
 
 	private final BCryptPasswordEncoder bcrytPass = new BCryptPasswordEncoder();
 
@@ -49,12 +44,12 @@ public class AccountServiceImpl implements AccountService {
 		return accountRepo.findById(username).get();
 	}
 
-	@Override
 	/*
 	 * => trong String_Boot khi ko định nghĩ cụ thể thì @Transactional nó mặc định
 	 * chỉ bắt Error => kích hoạt cơ chế rollbackon khi có xảy ra lỗi Exception &
 	 * Error
 	 */
+	@Override
 	@Transactional(rollbackOn = { Exception.class, Throwable.class })
 	public AccountReponseDto saveAccount(AccountRequestDto AccountDto) {
 		Account account = new Account();

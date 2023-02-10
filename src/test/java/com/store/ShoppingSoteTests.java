@@ -8,6 +8,7 @@ class ShoppingSoteTests {
 
     @Test
     void contextLoads() {
+    	
     }
 
 }

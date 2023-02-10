@@ -53,11 +53,6 @@ public class ProductServiceImpl implements ProductService {
     }
 
 	@Override
-	public List<Product> findAll() {
-		return productRepo.findAll();
-	}
-
-	@Override
 	@Transactional(rollbackOn = { Exception.class, Throwable.class })
 	public Product createProduct(Product product) {
 		return productRepo.save(product);

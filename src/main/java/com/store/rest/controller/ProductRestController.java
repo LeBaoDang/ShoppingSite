@@ -29,7 +29,7 @@ public class ProductRestController {
 	@GetMapping
 	public ResponseEntity<List<Product>> getAll() {
 		try {
-			return new ResponseEntity<List<Product>>(productsService.findAll(), HttpStatus.OK);
+			return new ResponseEntity<List<Product>>(productsService.findAllProduct(), HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<List<Product>>(HttpStatus.NOT_FOUND);
 		}

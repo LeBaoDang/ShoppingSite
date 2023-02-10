@@ -17,8 +17,6 @@ public interface ProductService {
     // phan trang product category
 	public Page<Product> findCategoryProduct(String categoryId, int pageSize, int pageNumber) throws Exception;
 
-	public List<Product> findAll();
-
 	public Product createProduct(Product product);
 	
 	public Product updateProduct(Product product);
