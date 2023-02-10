@@ -1,14 +1,17 @@
-package com.store.dto.reponsedto;
+package com.store.dto.requestdto;
 
 import java.util.Date;
 import java.util.List;
 
+import com.store.dto.reponsedto.CategoryReponseDto;
+import com.store.dto.reponsedto.OrderDetailReponseDto;
+
 import lombok.Data;
 
 @Data
-public class ProductReponseDto {
-	
-	private String name;
+public class ProductRequestDto {
+
+private String name;
 	
 	private String image;
 	
@@ -23,4 +26,5 @@ public class ProductReponseDto {
 	private CategoryReponseDto categoryReponseDto;
 	
 	private List<OrderDetailReponseDto> orderDetailReponseDto;
+	
 }

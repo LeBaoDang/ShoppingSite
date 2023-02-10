@@ -25,8 +25,8 @@ public class AccountRequestDto {
 	
 	private String photo;
 	
-	private List<OrderDto> orderDto;
+	private List<OrderRequestDto> orderDto;
 	
-	private List<AuthorityDto> authoritiesDto;
+	private List<AuthorityRequestDto> authoritiesDto;
 	
 }

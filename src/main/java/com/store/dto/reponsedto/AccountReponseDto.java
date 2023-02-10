@@ -2,8 +2,8 @@ package com.store.dto.reponsedto;
 
 import java.util.List;
 
-import com.store.dto.requestdto.AuthorityDto;
-import com.store.dto.requestdto.OrderDto;
+import com.store.dto.requestdto.AuthorityRequestDto;
+import com.store.dto.requestdto.OrderRequestDto;
 
 import lombok.Data;
 
@@ -18,8 +18,8 @@ private String username;
 	
 	private String photo;
 	
-	private List<OrderDto> orderDto;
+	private List<OrderRequestDto> orderDto;
 	
-	private List<AuthorityDto> authoritiesDto;
+	private List<AuthorityRequestDto> authoritiesDto;
 	
 }

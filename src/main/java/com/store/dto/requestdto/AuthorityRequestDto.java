@@ -1,5 +1,5 @@
 package com.store.dto.requestdto;
 
-public class OrderDto {
+public class AuthorityRequestDto {
 
 }

@@ -1,5 +1,5 @@
 package com.store.dto.requestdto;
 
-public class RoleDto {
+public class OrderRequestDto {
 
 }
