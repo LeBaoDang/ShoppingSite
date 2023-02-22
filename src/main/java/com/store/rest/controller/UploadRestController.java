@@ -34,9 +34,9 @@ public class UploadRestController {
 			ObjectNode node = mapper.createObjectNode();
 			node.put("name", saveFile.getName());
 			node.put("size", saveFile.length());
-			return new ResponseEntity<JsonNode>(node,HttpStatus.OK);
+			return new ResponseEntity<>(node,HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<JsonNode>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	

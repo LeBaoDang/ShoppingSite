@@ -40,20 +40,20 @@ public class AuthorityRestController {
 	Optional<Boolean> admin) {
 		try {
 			if (admin.orElse(false)) {
-				return new ResponseEntity<List<Authority>>(authorityService.findAuthoritiesOfAdministrators(), HttpStatus.OK);
+				return new ResponseEntity<>(authorityService.findAuthoritiesOfAdministrators(), HttpStatus.OK);
 			}
-			return new ResponseEntity<List<Authority>>(authorityService.findAll(), HttpStatus.OK);
+			return new ResponseEntity<>(authorityService.findAll(), HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<List<Authority>>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	@PostMapping
 	public ResponseEntity<Authority> post(@RequestBody Authority auth) {
 		try {
-			return new ResponseEntity<Authority>(authorityService.create(auth), HttpStatus.OK);
+			return new ResponseEntity<>(authorityService.create(auth), HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<Authority>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -61,9 +61,9 @@ public class AuthorityRestController {
 	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
 		try {
 			authorityService.delete(id);
-			return new ResponseEntity<Void> (HttpStatus.OK);
+			return new ResponseEntity<> (HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<Void> (HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<> (HttpStatus.BAD_REQUEST);
 		}
 	}
 	

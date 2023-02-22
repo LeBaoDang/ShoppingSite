@@ -38,20 +38,14 @@ public class AccountRestController {
 	public ResponseEntity< List<Account> > getAccounts(@RequestParam("admin") Optional<Boolean> admin) {
 		try {
 			if(admin.orElse(false)) {
-				return new ResponseEntity<List<Account>>(accountService.getAdministrators(), HttpStatus.OK);
+				return new ResponseEntity<>(accountService.getAdministrators(), HttpStatus.OK);
 			}
-			return new ResponseEntity<List<Account>>(accountService.findAll(),HttpStatus.OK);
+			return new ResponseEntity<>(accountService.findAll(),HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<List<Account>>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
-	@GetMapping("/list")
-	public List<Account> findAll(){
-		return accountService.findAll();
-	}
-	
-	
+
 	@GetMapping("login-in-account")
 	public Account getdn() {
 		Account account = accountService.findById(request.getUserPrincipal().getName());
