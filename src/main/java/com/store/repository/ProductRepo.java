@@ -17,8 +17,4 @@ public interface ProductRepo extends JpaRepository<Product, Long> {
     @Query(value = "SELECT * FROM Products WHERE CategoryId = ?1", nativeQuery = true )
     Page<Product> findCategoryProduct(String categoryId, Pageable pageable);
 
-
-//    @Query(value = "SELECT * FROM products WHERE typeId = ?1", nativeQuery = true )
-//    List<Products> getAllType(Long typeID);
-
 }

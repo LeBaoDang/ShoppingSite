@@ -14,8 +14,5 @@ public interface AccountRepo extends JpaRepository<Account, String> {
 	// lấy ra những account có vai trò là giám đốc && nhân viên
 	@Query("SELECT DISTINCT ar.account FROM Authority ar WHERE ar.role.id IN ('DIRE', 'STAF')")
 	List<Account> getAdministrators();
-	
-//	@Query(value = "select * from Accounts where username = ?1", nativeQuery = true)
-//	public Account getOneAccount(String username);
-	
+
 }
