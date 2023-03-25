@@ -4,6 +4,7 @@ import com.store.entity.Product;
 import com.store.service.CategoryService;
 import com.store.service.ProductService;
 import com.store.util.Constant;
+import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -71,4 +72,12 @@ public class ProductController {
         model.addAttribute("items",products);
         return "/product/detail";
     }
+
+//    @GetMapping("/search")
+//    public String search(Model model,  @RequestParam(value = "page",required = false, defaultValue = "1") int page, @RequestParam("product") String product){
+//        Page<Product> listProduct = productService.findBySearchProduct(product,  );
+//        model.addAttribute("item", listProduct);
+//        return "/product/list";
+//    }
+
 }

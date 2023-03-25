@@ -1,13 +1,12 @@
 <nav class="navbar navbar-light bg-light">
-
     <div>
         <button class="btn btn-outline-success" th:each=" c : ${cates} ">
-            <a th:href="@{|/product/list?cid=${c.id}|}"> <b><span>[[${c.name}]]</span></b>  </a>
+            <a th:href="@{|/product/list?cid=${c.id}|}"> <b><span>[[${c.name}]]</span></b></a>
         </button>
     </div>
 
-    <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <form class="form-inline" method="get" th:action=" @{/product/search} ">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="product">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </nav>

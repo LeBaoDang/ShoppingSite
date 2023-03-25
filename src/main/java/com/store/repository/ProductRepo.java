@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ProductRepo extends JpaRepository<Product, Long> {
 
@@ -14,7 +16,11 @@ public interface ProductRepo extends JpaRepository<Product, Long> {
     Page<Product> findAll(Pageable pageable);
 
     // phan trang cho category
-    @Query(value = "SELECT * FROM Products WHERE CategoryId = ?1", nativeQuery = true )
+    //@Query(value = "SELECT * FROM Products WHERE CategoryId = ?1", nativeQuery = true )
+    @Query(" SELECT p FROM Product p WHERE p.category.id = ?1")
     Page<Product> findCategoryProduct(String categoryId, Pageable pageable);
+
+    @Query(value = "select * from Products where name like ?1 ", nativeQuery = true)
+    Page<Product> findBySearchProduct(String nameProduct, Pageable pageable);
 
 }

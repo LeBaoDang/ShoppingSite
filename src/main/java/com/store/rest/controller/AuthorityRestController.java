@@ -25,16 +25,15 @@ import com.store.service.AuthorityService;
 @RestController
 @RequestMapping("/rest/authorities")
 public class AuthorityRestController {
-	
 	@Autowired
 	AuthorityService authorityService;
-	
+
 	@Autowired
 	HttpServletRequest request;
-	
+
 	@Autowired
 	AccountService accountService;
-	
+
 	@GetMapping
 	public ResponseEntity<List<Authority>> findAll(@RequestParam("admin")
 	Optional<Boolean> admin) {

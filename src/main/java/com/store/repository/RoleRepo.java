@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RoleRepo extends JpaRepository<Role, String> {
-	
-	@Query(value = "select * from roles where id = ?1", nativeQuery = true )
+
+	@Query("SELECT o FROM Role o WHERE o.id = ?1")
 	Role getRole(String id);
 
 	

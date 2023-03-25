@@ -23,7 +23,7 @@ public interface AuthorityRepo extends JpaRepository<Authority,Long> {
 	// lấy ra các quyền đã được cấp cho nhóm tài khoản account (admin)
 	@Query("SELECT DISTINCT a FROM Authority a WHERE a.account IN ?1")
 	List<Authority> authoritiesOf(List<Account> accounts);
-	
-	@Query(value = "select * from Authorities where Username = ?1 ", nativeQuery = true)
+
+	@Query("SELECT a FROM Authority a WHERE a.account.username = ?1 ")
 	List<Authority> findAuthority(String username);
 }

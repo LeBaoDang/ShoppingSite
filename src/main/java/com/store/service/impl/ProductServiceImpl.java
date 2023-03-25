@@ -84,6 +84,14 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 
+    @Override
+    public Page<Product> findBySearchProduct(String nameProduct, int pageSize, int pageNumber) throws Exception {
+        if (pageNumber >= 1) {
+            return productRepo.findBySearchProduct(nameProduct, PageRequest.of(pageNumber - 1, pageSize));
+        } else {
+            throw new Exception("page number must be greater than 0");
+        }
 
+    }
 
 }

@@ -22,4 +22,6 @@ public interface ProductService {
 	public Product updateProduct(Product product);
 	
 	public void deleteProduct(Long id);
+
+	public Page<Product> findBySearchProduct(String nameProduct, int pageSize, int pageNumber) throws Exception ;
 }
