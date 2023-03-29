@@ -63,7 +63,7 @@ public class ProductController {
                 Page<Product> productPage = productService.findSearch(search.get(),Constant.PAGE_PRODUCT_CATEGORY_MAX_SIZE, page );
                 products = productPage.getContent();
                 model.addAttribute("totalPagesSearch", productPage.getTotalPages()); // tổng số trang
-                model.addAttribute("currentPageCategory",page); // trang hiện tại
+                model.addAttribute("currentPageSearch",page); // trang hiện tại
                 model.addAttribute("categoryId",search.get()); //
             } catch (Exception e) {
                 products = productService.findAllProduct();

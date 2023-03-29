@@ -60,25 +60,25 @@
         <div class="col-md-12">
             <ul class="pagination">
 
-                <li class="page-item" th:class="${currentPageCategory == 1 ? 'disabled' : '' }" >
-                    <a class="page-link" th:href="@{ ${currentPageCategory > 1} ? ${ '?search=' + categoryId + '&&page=' + (currentPageCategory - currentPageCategory + 1)} }"> <i class="fa fa-backward"></i> </a>
+                <li class="page-item" th:class="${currentPageSearch == 1 ? 'disabled' : '' }" >
+                    <a class="page-link" th:href="@{ ${currentPageSearch > 1} ? ${ '?search=' + categoryId + '&&page=' + (currentPageSearch - currentPageSearch + 1)} }"> <i class="fa fa-backward"></i> </a>
                 </li>
 
                 <!--http://localhost:8080/product/list?cid=1001 -->
-                <li class="page-item" th:class="${currentPageCategory == 1 ? 'disabled' : '' }" >
-                    <a class="page-link" th:href="@{ ${currentPageCategory > 1} ? ${ '?search=' + categoryId + '&&page=' + (currentPageCategory - 1)} }"> <i class="fa fa-hand-o-left"></i> </a>
+                <li class="page-item" th:class="${currentPageSearch == 1 ? 'disabled' : '' }" >
+                    <a class="page-link" th:href="@{ ${currentPageSearch > 1} ? ${ '?search=' + categoryId + '&&page=' + (currentPageSearch - 1)} }"> <i class="fa fa-hand-o-left"></i> </a>
                 </li>
 
-                <li class="page-item" th:each="i : ${#numbers.sequence(1,totalPagesSearch)}" th:class="${currentPageCategory == i ? 'active' : ''}">
+                <li class="page-item" th:each="i : ${#numbers.sequence(1,totalPagesSearch)}" th:class="${currentPageSearch == i ? 'active' : ''}">
                     <a class="page-link" th:href="@{ |?search=| + ${categoryId} + |&&page=| + ${i} }">[[${i}]]</a>
                 </li>
 
-                <li class="page-item" th:class="${currentPageCategory == totalPagesSearch ? 'disabled' : ''}">
-                    <a class="page-link" th:href="@{ ${currentPageCategory < totalPagesSearch} ? ${ '?search=' + categoryId + '&&page=' + (currentPageCategory + 1)} }"> <i class="fa fa-hand-o-right"></i> </a>
+                <li class="page-item" th:class="${currentPageSearch == totalPagesSearch ? 'disabled' : ''}">
+                    <a class="page-link" th:href="@{ ${currentPageSearch < totalPagesSearch} ? ${ '?search=' + categoryId + '&&page=' + (currentPageSearch + 1)} }"> <i class="fa fa-hand-o-right"></i> </a>
                 </li>
 
-                <li class="page-item" th:class="${currentPageCategory == totalPagesSearch ? 'disabled' : ''}">
-                    <a class="page-link" th:href="@{ ${currentPageCategory < totalPagesSearch} ? ${ '?search=' + categoryId + '&&page=' + (currentPageCategory + totalPagesSearch - 1 )} }"> <i class="fa fa-forward"></i> </a>
+                <li class="page-item" th:class="${currentPageSearch == totalPagesSearch ? 'disabled' : ''}">
+                    <a class="page-link" th:href="@{ ${currentPageSearch < totalPagesSearch} ? ${ '?search=' + categoryId + '&&page=' + (currentPageSearch + totalPagesSearch - 1 )} }"> <i class="fa fa-forward"></i> </a>
                 </li>
 
             </ul>
