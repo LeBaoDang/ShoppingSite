@@ -4,7 +4,6 @@ import com.store.entity.Product;
 import com.store.service.CategoryService;
 import com.store.service.ProductService;
 import com.store.util.Constant;
-import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
