@@ -17,11 +17,12 @@ public interface ProductService {
     // phan trang product category
 	public Page<Product> findCategoryProduct(String categoryId, int pageSize, int pageNumber) throws Exception;
 
+	// phan trang search
+	public Page<Product> findSearch(String name, int pageSize, int pageNumber) throws Exception;
+
 	public Product createProduct(Product product);
 	
 	public Product updateProduct(Product product);
 	
 	public void deleteProduct(Long id);
-
-	public Page<Product> findBySearchProduct(String nameProduct, int pageSize, int pageNumber) throws Exception ;
 }

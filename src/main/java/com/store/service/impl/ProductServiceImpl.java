@@ -52,7 +52,16 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-	@Override
+    @Override
+    public Page<Product> findSearch(String name, int pageSize, int pageNumber) throws Exception {
+        if(pageNumber >= 1) {
+            return productRepo.findSearch(name, PageRequest.of(pageNumber - 1, pageSize));
+        } else {
+            throw new Exception("page number must be greater than 0");
+        }
+    }
+
+    @Override
 	@Transactional(rollbackOn = { Exception.class, Throwable.class })
 	public Product createProduct(Product product) {
 		return productRepo.save(product);
@@ -83,15 +92,5 @@ public class ProductServiceImpl implements ProductService {
 		productRepo.deleteById(id);
 		
 	}
-
-    @Override
-    public Page<Product> findBySearchProduct(String nameProduct, int pageSize, int pageNumber) throws Exception {
-        if (pageNumber >= 1) {
-            return productRepo.findBySearchProduct(nameProduct, PageRequest.of(pageNumber - 1, pageSize));
-        } else {
-            throw new Exception("page number must be greater than 0");
-        }
-
-    }
 
 }

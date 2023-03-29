@@ -55,6 +55,33 @@ public class ProductController {
         return "/product/list";
     }
 
+    @GetMapping("/list/search")
+    public String productListSearch(Model model, @RequestParam(value = "page" , required = false, defaultValue = "1") int page,@RequestParam("search")Optional<String> search) throws Exception { // required ko bắt buộc default xet giá trị mặc định
+        List<Product> products = new ArrayList<>();
+        if(search.isPresent()){
+            try {
+                Page<Product> productPage = productService.findSearch(search.get(),Constant.PAGE_PRODUCT_CATEGORY_MAX_SIZE, page );
+                products = productPage.getContent();
+                model.addAttribute("totalPagesSearch", productPage.getTotalPages()); // tổng số trang
+                model.addAttribute("currentPageCategory",page); // trang hiện tại
+                model.addAttribute("categoryId",search.get()); //
+            } catch (Exception e) {
+                products = productService.findAllProduct();
+            }
+        } else {
+            try {
+                Page<Product> productPage = productService.findAllProduct(Constant.PAGE_PRODUCT_MAX_SIZE, page );
+                products = productPage.getContent();
+                model.addAttribute("totalPages", productPage.getTotalPages()); // tổng số trang
+                model.addAttribute("currentPage",page); // trang hiện tại
+            } catch (Exception e) {
+                products = productService.findAllProduct();
+            }
+        }
+        model.addAttribute("item",products);
+        return "/product/list";
+    }
+
     @GetMapping("/detail/{id}")
     public String productDetail(Model model, @PathVariable("id") Long id, @RequestParam(value = "page",required = false, defaultValue = "1") int page){
         List<Product> products = new ArrayList<>();
@@ -72,12 +99,5 @@ public class ProductController {
         model.addAttribute("items",products);
         return "/product/detail";
     }
-
-//    @GetMapping("/search")
-//    public String search(Model model,  @RequestParam(value = "page",required = false, defaultValue = "1") int page, @RequestParam("product") String product){
-//        Page<Product> listProduct = productService.findBySearchProduct(product,  );
-//        model.addAttribute("item", listProduct);
-//        return "/product/list";
-//    }
 
 }
