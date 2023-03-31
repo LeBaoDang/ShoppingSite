@@ -1,5 +1,8 @@
 package com.store.controller;
 
+import com.store.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/security")
 public class SecurityController {
-	
+
+    @Autowired
+    UserService userService;
 
     @GetMapping("/login/form")
     public String loginForm(Model model){
@@ -17,7 +22,8 @@ public class SecurityController {
     }
 
     @GetMapping("/login/success")
-    public String loginSuccess(Model model){
+    public String loginSuccess(Model model, OAuth2AuthenticationToken oauth2){
+        userService.loginFromOAuth2(oauth2);
     	 model.addAttribute("message", " <b style=\"position: absolute;  right: 0px;  width: 300px; color: chartreuse \" > Đăng nhập thành công! </b> ");
          return "/security/login";
     }

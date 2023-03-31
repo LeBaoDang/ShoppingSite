@@ -59,7 +59,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // đăng xuất
         http.logout().logoutUrl("/security/logoff") /* địa chỉ đường dẫn khi đăng xuất */
                 .logoutSuccessUrl("/security/logoff/success"); /* địa chỉ xử lý dăng xuất khi thành công */
+
+        // Đăng nhập từ mạng xã hội
+        http.oauth2Login()
+                .loginPage("/security/login/form")
+                .defaultSuccessUrl("/security/login/success", true)
+                .failureUrl("/security/login/error")
+                .authorizationEndpoint()
+                .baseUri("/oauth2/authorization");
     }
+
 
     // cơ chế mã hóa mật khẩu
     @Bean

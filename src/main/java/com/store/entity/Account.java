@@ -38,4 +38,16 @@ public class Account  implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
 	private List<Authority> authorities;
+
+
+	public Account(String username, String password, String fullname, String email, String photo) {
+		this.username = username;
+		this.password = password;
+		this.fullname = fullname;
+		this.email = email;
+		this.photo = photo;
+	}
+
+	public Account() {
+	}
 }
