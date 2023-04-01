@@ -63,7 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Đăng nhập từ mạng xã hội
         http.oauth2Login()
                 .loginPage("/security/login/form")
-                .defaultSuccessUrl("/security/login/success", true)
+                .defaultSuccessUrl("/security/login/success/oauth2", true)
                 .failureUrl("/security/login/error")
                 .authorizationEndpoint()
                 .baseUri("/oauth2/authorization");

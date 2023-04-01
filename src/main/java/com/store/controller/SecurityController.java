@@ -22,10 +22,16 @@ public class SecurityController {
     }
 
     @GetMapping("/login/success")
-    public String loginSuccess(Model model, OAuth2AuthenticationToken oauth2){
-        userService.loginFromOAuth2(oauth2);
+    public String loginSuccess(Model model){
     	 model.addAttribute("message", " <b style=\"position: absolute;  right: 0px;  width: 300px; color: chartreuse \" > Đăng nhập thành công! </b> ");
          return "/security/login";
+    }
+
+    @GetMapping("/login/success/oauth2")
+    public String loginSuccessOauth2(Model model, OAuth2AuthenticationToken oauth2){
+        userService.loginFromOAuth2(oauth2);
+        model.addAttribute("message", " <b style=\"position: absolute;  right: 0px;  width: 300px; color: chartreuse \" > Đăng nhập thành công! </b> ");
+        return "/security/login";
     }
 
     @GetMapping("/login/error")
