@@ -30,10 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/order/**").authenticated()
+                .antMatchers("/order/**","/security/profile").authenticated()
                 .antMatchers("/admin/**").hasAnyRole("STAF", "DIRE")
                 .antMatchers("/rest/authorities").hasRole("DIRE")
-                .anyRequest().permitAll(); // tất cả trang còn lại bắt đăng nhập
+                .anyRequest().permitAll(); // tất cả trang còn lại k bắt đăng nhập
 
         http.formLogin()
                 .loginPage("/security/login/form") /* địa chỉ form đăng nhập */

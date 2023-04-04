@@ -1,5 +1,7 @@
 package com.store.controller;
 
+import com.store.entity.Account;
+import com.store.service.AccountService;
 import com.store.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -8,12 +10,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/security")
 public class SecurityController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    AccountService accountService;
+
+    @Autowired
+    HttpServletRequest request;
 
     @GetMapping("/login/form")
     public String loginForm(Model model){
@@ -51,5 +61,13 @@ public class SecurityController {
         model.addAttribute("message"," <b style=\"position: absolute;  right: 0px;  width: 300px; color: chartreuse \" > Bạn đã đăng xuất thành công! </b>");
         return "/security/login";
     }
+
+    @GetMapping("/profile")
+    public String proFile(Model model){
+        Account account = accountService.findById(request.getUserPrincipal().getName());
+        model.addAttribute("account", account);
+        return "/security/profile";
+    }
+
 
 }

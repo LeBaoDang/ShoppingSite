@@ -62,7 +62,7 @@
 
 							<!-- thong tin nguoi dang nhap -->
 							<li th:if="${#request.remoteUser}" class="nav-item"><a
-								href="" class="icons"> <i class="fa fa-user" aria-hidden="true"></i>
+								th:href="@{/security/profile}" class="icons"> <i class="fa fa-user" aria-hidden="true"></i>
 									<b style="color: chartreuse;">[[${#request.remoteUser}]]</b>
 								</i>
 							</a></li>
