@@ -16,14 +16,14 @@
                 <div class="row">
                     <div class="col-6">
                         <label>Username</label> <br>
-                        <label type="text" class="form-control" th:text="${account.username}"/><br>
+                        <i type="text" class="form-control" th:text="${account.username}"/><br>
                         <label> Fullname </label>
-                        <label type="text" class="form-control" th:text="${account.fullname}" /> <br>
+                        <i type="text" class="form-control" th:text="${account.fullname}" /> <br>
                         <label> Email </label>
-                        <label type="email" class="form-control" th:text="${account.email}" /> <br>
+                        <i type="email" class="form-control" th:text="${account.email}" /> <br>
                         <label>Vai trò</label> <br>
-                        <i th:each="a : ${authority}">
-                            <i>[[${a.role.name}]]</i>
+                        <i type="text" class="form-control">
+                            <i th:each="a : ${authority}" >[[${a.role.name}]]</i>
                         </i>
                     </div>
                     <div class="col-6" th:if="${account.photo}">
