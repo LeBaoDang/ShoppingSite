@@ -5,6 +5,8 @@ import java.util.List;
 import com.store.dto.reponsedto.AccountReponseDto;
 import com.store.dto.requestdto.AccountRequestDto;
 import com.store.entity.Account;
+import com.store.entity.Authority;
+import com.store.entity.Role;
 
 public interface AccountService {
 
@@ -15,5 +17,7 @@ public interface AccountService {
 	public List<Account> getAdministrators();
 	
 	public List<Account> findAll();
+
+	public List<Authority> RoleFindAll(String username);
 	
 }

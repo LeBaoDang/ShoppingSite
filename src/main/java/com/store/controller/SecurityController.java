@@ -1,7 +1,10 @@
 package com.store.controller;
 
 import com.store.entity.Account;
+import com.store.entity.Authority;
+import com.store.entity.Role;
 import com.store.service.AccountService;
+import com.store.service.AuthorityService;
 import com.store.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @RequestMapping("/security")
@@ -24,6 +28,9 @@ public class SecurityController {
 
     @Autowired
     HttpServletRequest request;
+
+    @Autowired
+    AuthorityService authorityService;
 
     @GetMapping("/login/form")
     public String loginForm(Model model){
@@ -65,7 +72,9 @@ public class SecurityController {
     @GetMapping("/profile")
     public String proFile(Model model){
         Account account = accountService.findById(request.getUserPrincipal().getName());
+        List<Authority> authority = authorityService.findAuthority(account.getUsername());
         model.addAttribute("account", account);
+        model.addAttribute("authority", authority);
         return "/security/profile";
     }
 

@@ -3,6 +3,8 @@ package com.store.service.impl;
 import com.store.dto.reponsedto.AccountReponseDto;
 import com.store.dto.requestdto.AccountRequestDto;
 import com.store.entity.Account;
+import com.store.entity.Authority;
+import com.store.entity.Role;
 import com.store.repository.AccountRepo;
 import com.store.repository.AuthorityRepo;
 import com.store.service.AccountService;
@@ -80,5 +82,10 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public List<Account> findAll() {
 		return accountRepo.findAll();
+	}
+
+	@Override
+	public List<Authority> RoleFindAll(String username) {
+		return authorityRepo.findAuthority(username);
 	}
 }

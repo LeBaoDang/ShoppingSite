@@ -21,6 +21,10 @@
                         <label type="text" class="form-control" th:text="${account.fullname}" /> <br>
                         <label> Email </label>
                         <label type="email" class="form-control" th:text="${account.email}" /> <br>
+                        <label>Vai trò</label> <br>
+                        <i th:each="a : ${authority}">
+                            <i>[[${a.role.name}]]</i>
+                        </i>
                     </div>
                     <div class="col-6" th:if="${account.photo}">
                         <img class="mx-auto d-block img-fluid w-75"
@@ -31,9 +35,6 @@
                              th:src="@{'/utilities/img/imagesStaff/admin.png'}"/>
                     </div>
                 </div>
-            </div>
-            <div class="card-footer">
-                <button class="btn btn-primary">Save</button>
             </div>
         </div>
 
