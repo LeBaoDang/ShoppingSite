@@ -29,6 +29,7 @@
     <link rel="stylesheet" th:href="@{/utilities/css/responsive.css}" />
     <link rel="stylesheet" th:href="@{/utilities/css/login.css}" />
     <link rel="stylesheet" th:href="@{/utilities/css/footer.css}" />
+    <link rel="stylesheet" th:href="@{/utilities/css/search.css}" />
 </head>
 
 <body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
@@ -37,9 +38,10 @@
         <header class="header_area">
             <div th:replace="/layout/_menu.html"></div>
         </header>
-        <b> <hr> 
+        <b> <hr>
         <div class="container">
-            <div th:replace="/layout/_category.html"></div> <br> <br>
+            <div th:replace="/layout/_category.html"></div> <br>
+            <hr>
             <div th:replace="${main}"></div>
         </div> <br>
         <div th:replace="/layout/_page.html"></div> <br>
