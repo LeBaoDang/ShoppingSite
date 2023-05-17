@@ -1,4 +1,4 @@
-package com.store.util;
+package com.store.service.impl.exception.util;
 
 public class Constant {
     public static final int PAGE_PRODUCT_MAX_SIZE = 8;
